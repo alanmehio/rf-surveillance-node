@@ -1,0 +1,14 @@
+# see config file doc https://coverage.readthedocs.io/en/7.6.1/config.html
+#
+[run]
+source =
+    src/rf-surveillance
+    tests
+
+[report]
+show_missing = true
+precision = 2
+omit = *migrations*
+exclude_lines =
+    raise NotImplementedError
+    raise NotImplemented

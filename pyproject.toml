@@ -12,8 +12,8 @@ build-backend = "poetry.core.masonry.api"
 name = "rf-surveillance"
 version = "0.2.0"
 description = "Digital Magnatic Compass View"
-authors = ["Iso", "Alan"]
-maintainers = ["Iso","Alan"]
+authors = ["Alan"]
+maintainers = ["Alan"]
 license = "AGPL-3.0-only"
 readme = "README.rst"
 
@@ -46,7 +46,7 @@ classifiers = [
 ]
 
 packages = [
-    { include = "dmcview", from = "src" },
+    { include = "rf_surveillance_node", from = "src" },
 ]
 
 include = [

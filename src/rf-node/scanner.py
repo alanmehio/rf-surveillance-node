@@ -2,28 +2,12 @@
 from rtlsdr import RtlSdr
 import numpy as np
 from threading import Thread 
-import queue
+from broker import DataBroker
+
 
 from device_manager import DeviceManager
 
-# Alan To be moved away later 
-q = queue.Queue()
 
-def worker():
-    while True:
-        print('inside the worker now ..')
-        item = q.get()
-        print(f'Working on {type(item)}')
-        print(f' The type of the element is {type(item[0])}')
-        
-        # check for the element type 
-        if type(item[0]) ==  np.complex128:
-             print(f'Got the samples of size {len(item)}')
-        elif type(item[0]) == np.float64:
-             print(f' Got the frequencies array of size {len(item)}')
-
-# Turn on the worker thread
-Thread(target=worker, daemon=True).start()
 
 
 
@@ -67,7 +51,7 @@ class Scanner(Thread):
             power = 10*np.log10(np.mean(spectrum))
             if(power> 55.0): # configure the power to send the sample
                 print(f' power is {power}')
-                q.put(samples)
+                DataBroker.q.put(samples)
             power_levels.append(power)
         
         self.sdr.close()
@@ -79,22 +63,29 @@ class Scanner(Thread):
         print('Sending the result to the queue')
         # Alan we need to send the samlpes also for the analyser to extract information may be if we can 
         # define our threshold to capture the samples 
-        q.put(high_power_freqs)
+        DataBroker.q.put(high_power_freqs)
 
 
 
 if __name__ == "__main__":
     serial_numbers = DeviceManager.get_device_serial_list()
+    print(f' RTL SDR numbers {len(serial_numbers)}')
+
     scanners = [] # a list of scanner
 
-    for serial_number in serial_numbers:
+    for i in (range(len(serial_numbers))):
         # pass the serial number directly
-        sdr = RtlSdr(serial_number=serial_number)
+        #print(f'serial number {serial_number}')
+        # Find the device index for a given serial number
+        #device_index = RtlSdr.get_device_index_by_serial(serial_number)
+        print(f'device index {i}')
+        sdr = RtlSdr(device_index=i)
         # Alan check for null or if there will be exception etc..
-        scanner = Scanner('101.5','105.5','100', sdr)
+        scanner = Scanner('101.5','102.5','100', sdr)
         #scanner = Scanner('102.1','102.3','100', sdr)
         #thread1.name = 'Scanner one '
         scanners.append(scanner)
+
     
 
     for scanner in scanners:
@@ -106,9 +97,6 @@ if __name__ == "__main__":
         thread.join()
 
 
-# Block until all tasks are done
-print('Before the join for queue ...')
-q.join()
-print('All work completed')
+
          
         

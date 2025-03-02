@@ -5,12 +5,15 @@ from threading import Thread
 from broker import DataBroker
 from scanner import Scanner
 from device_manager import DeviceManager
+from conf.setting import Setting
+from conf.log_manager import LogManager
 
 
 
 def main()-> None:
     data_broker = DataBroker()
     data_broker.start()
+
 
     serial_numbers = DeviceManager.get_device_serial_list()
     print(f' RTL SDR numbers {len(serial_numbers)}')

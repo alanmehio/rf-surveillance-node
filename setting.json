@@ -1,0 +1,8 @@
+{
+  "freq_start":"0.1",
+  "freq_end":"1.75",
+  "freq_step":"10",
+  "sample_size":"1048576",
+  "sample_rate":"3.2",
+  "power_threshold":"55.00"
+}

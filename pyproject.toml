@@ -9,20 +9,20 @@ build-backend = "poetry.core.masonry.api"
 # Information required for building (sdist/wheel)
 ## Also renders on pypi as 'subtitle'
 [tool.poetry]
-name = "rf-surveillance"
-version = "0.2.0"
-description = "Digital Magnatic Compass View"
+name = "rf-surveillance-node"
+version = "0.1.0"
+description = "RF node "
 authors = ["Alan"]
 maintainers = ["Alan"]
 license = "AGPL-3.0-only"
 readme = "README.rst"
 
-homepage = "https://github.com/alammehio/rf-surveillance"
-repository = "https://github.com/alammehio/rf-surveillance"
-documentation = "https://rf-surveillance.readthedocs.io/"
+homepage = "https://github.com/alammehio/rf-surveillance-node"
+repository = "https://github.com/alammehio/rf-surveillance-node"
+documentation = "https://rf-surveillance-node.readthedocs.io/"
 
 keywords = [
-    "digital Magnatic view", "dmc",
+    "Radio Frequency Node", "RF",
 ]
 
 # Troves classifer see https://pypi.org/classifiers/
@@ -46,7 +46,7 @@ classifiers = [
 ]
 
 packages = [
-    { include = "rf_surveillance_node", from = "src" },
+    { include = "rf-node", from = "src" },
 ]
 
 include = [
@@ -93,7 +93,6 @@ exclude = [
 ### Dependency Constraints, aka Requirements ###
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
-pyside6= ">=6.6.1"
 
 
 
@@ -121,13 +120,13 @@ sphinxcontrib-mermaid = { version = "^1.0.0", optional = true, python = ">=3.7,<
 ### see https://stackoverflow.com/questions/72345536/how-to-avoid-mypy-checking-explicitly-excluded-but-imported-modules-without-ma
 ### see https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
 [[tool.mypy.overrides]]
-module =["PySide6.*"]
+#module =["PySide6.*"]
 ignore_errors = true
 #disable_error_code = ["syntax"]
 
 
 [tool.poetry.scripts]
- cli = 'dmcview.cli:main'
+ cli = 'rf-node.cli:main'
 
 [tool.poetry.extras] #see https://realpython.com/dependency-management-python-poetry/
  docs = ["sphinx", "sphinx-rtd-theme", "sphinx-notfound-page", "sphinxcontrib-spelling"]
@@ -178,4 +177,4 @@ skips = [
 
 # see scripts/parse_version.py 
 [tool.software-release]
-version_variable = "src/dmcview/__init__.py:__version__"
+version_variable = "src/rf-node/__init__.py:__version__"

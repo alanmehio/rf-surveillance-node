@@ -19,7 +19,6 @@ class LogManager(object):
         params["format"] = "[%(asctime)s][%(levelname)7s][%(name)6s] %(message)s"
         params["level"] = level
         params["datefmt"] = "%Y-%m-%d %H:%M:%S"
-        #params["datefmt"] = "%Y-%m-%d %H:%M:%S"
         if dir:
             now = datetime.datetime.now()
             os.makedirs("%s/%04d-%02d-%02d" % (dir, now.year, now.month, now.day), exist_ok=True)

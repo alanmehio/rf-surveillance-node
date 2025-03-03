@@ -3,6 +3,7 @@ from rtlsdr import RtlSdr
 import numpy as np
 from threading import Thread 
 from broker import DataBroker
+import logging
 
 
 from device_manager import DeviceManager
@@ -24,45 +25,42 @@ def display_menu():
     
 
 class Scanner(Thread):
-    # The values comes from a Setting class to different range and steps
-    def __init__(self, start_freq:str, stop_freq:str, step_size:str, sdr: RtlSdr):
-        Thread.__init__(self)
-        self.start_freq = int(float(start_freq)*1e6)
-        self.stop_freq = int(float(stop_freq)*1e6)
-        self.step_size = int(float(step_size)*1e3)
-        self.sdr = sdr
-        self.sample_rate = 3.2e6 # Hz configured
-        self.gain = 'auto'
 
-    def set_sdr(self,sdr:RtlSdr):
+    def __init__(self, frequencies:list[np.int64], sample_rate:int, sample_size:int, 
+                   power_threshold: float, sdr: RtlSdr):
+        Thread.__init__(self)
+        self.frequencies = frequencies
+        self.sample_rate = sample_rate
+        self.sample_size = sample_size 
+        self.power_threshold = power_threshold
         self.sdr = sdr
+        self.gain = 'auto'
+        self.logger = logging.getLogger("Scanner")
 
 
     def run(self):
-        print(f'Starting {self.name} thread ')
-        sample_size = 1024*1024 # Alan configure it 
-        frequencies = np.arange(self.start_freq,self.stop_freq, self.step_size)
+        self.logger.info(f'{self.name}: Starting scanner')
         power_levels = []
-        print(f"Scanning from {self.start_freq/1e6} MHz to {self.stop_freq/1e6} MHz...")
-        for freq in frequencies:
+        stop_freq = self.frequencies[len(frequencies)-1]
+        self.logger.info(f'{self.name:} Scanning from {self.frequencies[0]/1e6} MHz to {stop_freq/1e6} MHz...')
+
+        for freq in self.frequencies:
             self.sdr.center_freq =freq
-            samples = self.sdr.read_samples(sample_size)
+            samples = self.sdr.read_samples(self.sample_size)
             spectrum = np.fft.fftshift(np.abs(np.fft.fft(samples))**2)
             power = 10*np.log10(np.mean(spectrum))
-            if(power> 55.0): # configure the power to send the sample
-                print(f' power is {power}')
-                DataBroker.q.put(samples)
+            if(power> self.power_threshold): # configure the power to send the sample
+                self.logger.info(f'{self.name:} power is {power}')
+                DataBroker.q.put(samples) # sending the samples for config threshold power
             power_levels.append(power)
         
         self.sdr.close()
 
         threshold = np.mean(power_levels) + np.std(power_levels)
         high_power_indices = np.where(np.array(power_levels) > threshold)[0] # tuple (np.array(),)
-        high_power_freqs = frequencies[high_power_indices]/1e6 # numpy array sending array of indices  into a np array
-        print("High Power frequencies detected at (MHz):", high_power_freqs)
-        print('Sending the result to the queue')
-        # Alan we need to send the samlpes also for the analyser to extract information may be if we can 
-        # define our threshold to capture the samples 
+        high_power_freqs = self.frequencies[high_power_indices]/1e6 # numpy array sending array of indices  into a np array
+        self.logger.info(f'{self.name}: High Power frequencies detected at (MHz): {high_power_freqs}')
+        self.logger.info(f'{self.name}: Sending the result to the queue')
         DataBroker.q.put(high_power_freqs)
 
 
@@ -71,19 +69,31 @@ if __name__ == "__main__":
     serial_numbers = DeviceManager.get_device_serial_list()
     print(f' RTL SDR numbers {len(serial_numbers)}')
 
-    scanners = [] # a list of scanner
+    params = {}
+    level = logging.INFO
+    params["format"] = "[%(asctime)s][%(levelname)7s][%(name)6s] %(message)s"
+    params["level"] = level
+    params["datefmt"] = "%Y-%m-%d %H:%M:%S"
+    logging.basicConfig(**params)
 
+    data_broker = DataBroker()
+    data_broker.start()
+    
+
+
+
+    scanners = [] # a list of scanner
+    arrs = np.arange(105*1e6, 106*1e6, 10000) 
+    frequencies = np.split(arrs,len(serial_numbers))
     for i in (range(len(serial_numbers))):
-        # pass the serial number directly
-        #print(f'serial number {serial_number}')
-        # Find the device index for a given serial number
-        #device_index = RtlSdr.get_device_index_by_serial(serial_number)
         print(f'device index {i}')
         sdr = RtlSdr(device_index=i)
-        # Alan check for null or if there will be exception etc..
-        scanner = Scanner('101.5','102.5','100', sdr)
-        #scanner = Scanner('102.1','102.3','100', sdr)
-        #thread1.name = 'Scanner one '
+        sample_size = 1024*1024
+        sample_rate = 32*1e5 # 3.2 MHz
+        power_threshold = 55.55
+        scanner = Scanner(frequencies=frequencies[i],sample_rate=sample_rate, sample_size=sample_size, 
+        power_threshold=power_threshold,sdr=sdr)
+
         scanners.append(scanner)
 
     

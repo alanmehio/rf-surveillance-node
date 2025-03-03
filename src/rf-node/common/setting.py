@@ -20,7 +20,7 @@ class Setting():
 
 
 if __name__ == "__main__":
-    Setting.load_setting("/home/alan/workspace-python/RTL-SDR/rf-surveillance-node/setting.json")
+    Setting.load_setting("/home/alan/workspace-python/RTL-SDR/rf-surveillance-node/src/setting.json")
     print(Setting.freq_start)
     print(Setting.freq_end)
     print(Setting.freq_step)

@@ -5,6 +5,13 @@
 | Goal of the project is to build a ... node and hub etc...  
   
 """
-# The below version not used in build from tox
-# build version is found in pyproject.toml 
-__version__ = '0.1.0'
+
+from __future__ import annotations
+
+from .run import main
+from .version import version as __version__
+
+__all__ = (
+    "__version__",
+    "main",
+)

@@ -41,7 +41,8 @@ class Scanner(Thread):
     def run(self):
         self.logger.info(f'{self.name}: Starting scanner')
         power_levels = []
-        stop_freq = self.frequencies[len(frequencies)-1]
+        stop_freq = self.frequencies[len(self.frequencies)-1]
+        print(f'Alan stop_freq {stop_freq/1e6}')
         self.logger.info(f'{self.name:} Scanning from {self.frequencies[0]/1e6} MHz to {stop_freq/1e6} MHz...')
 
         for freq in self.frequencies:

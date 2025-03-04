@@ -12,15 +12,15 @@ class DataBroker():
     def worker(self):
         while True:
             self.logger.info('inside the worker now ..')
-            item = DataBroker.q.get()
-            print(f'Working on {type(item)}')
-            print(f' The type of the element is {type(item[0])}')
+            items = DataBroker.q.get()
+            self.logger.info(f'Working items type {type(items)}')
+            self.logger.info(f' The type of the element is {type(items[0])}')
         
             # check for the element type 
-            if isinstance(item[0],np.complex128):
-                self.logger.info(f'Got the samples of size {len(item)}')
-            elif isinstance(item[0], np.float64):
-                self.logger.info(f' Got the frequencies array of size {len(item)}')
+            if isinstance(items[0],np.complex128):
+                self.logger.info(f'Got the samples of size {len(items)}')
+            elif isinstance(items[0], np.float64):
+                self.logger.info(f' Got the frequencies array of size {len(items)}')
 
     def start(self):
         # Turn on the worker thread

@@ -12,13 +12,16 @@ import argparse
 
 
 '''
-python3  src/rf-node/cli.py ../setting.json -vvv -ld /home/alan/tmp
+$ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance-node/src
+$ pwd 
+ /home/alan/workspace-python/RTL-SDR/rf-surveillance-node/src
+$ python3 rfnode setting.json -vvv -ld /home/alan/tmp
 '''
-def run()-> None:
+def main()-> None:
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("setting", help="path to setting file", type="str",metavar="file")
-    parser.add_argument("-ld", "--log_directory", help="store output log in a directory",type="str",metavar="dir")
+    parser.add_argument("setting", help="path to setting file", type=str,metavar="file")
+    parser.add_argument("-ld", "--log_directory", help="store output log in a directory",type=str,metavar="dir")
     parser.add_argument("-v", "--verbose", action="count", default=0)
     args = parser.parse_args()
     
@@ -49,6 +52,7 @@ def run()-> None:
     for thread in scanners:
         print("waiting for the thread " + thread.name + " to finish")
         thread.join()
+        print(f"Thread {thread.name} is finished now")
 
 
 

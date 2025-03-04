@@ -12,7 +12,7 @@ class Setting():
         with open(file) as f:
             config = json.load(f)
             Setting.freq_start = int(float(config["freq_start"])*1e6) # MHz
-            Setting.freq_end = int(float(config["freq_end"])*1e9) #GHz
+            Setting.freq_end = int(float(config["freq_end"])*1e6) #GHz
             Setting.freq_step = int(float(config["freq_step"])*1e3) # KHz
             Setting.sample_size = int(config["sample_size"]) 
             Setting.sample_rate = int(float(config["sample_rate"])*1e6) # MHz

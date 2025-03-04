@@ -7,9 +7,8 @@ class Util:
 
     @classmethod
     def generate_array(cls,freq_start:int, freq_end:int, freq_step:int, device_amount: int)->list[np.int64]:
-        #frequencies = np.arange(self.start_freq,self.stop_freq, self.step_size)
         frequencies = np.arange(freq_start, freq_end, freq_step, np.int64)
-        return  np.split(frequencies,device_amount)
+        return  np.array_split(frequencies,device_amount) # split of equal or near-equal size
     
 
 

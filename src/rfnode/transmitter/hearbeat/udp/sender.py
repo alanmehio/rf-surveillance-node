@@ -12,7 +12,7 @@ class Sender():
             # send the heartbeat message
             print("Trying to send heartbest")
             master.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_GCS,
-                                                mavutil.mavlink.MAVLINK_MSG_ID_UNKNOWN, 0, 0, 0)
+                                                mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
             print("Heartbest sent")
             print("\n\n")
             time.sleep(1)

@@ -3,12 +3,12 @@ from pymavlink import mavutil
 
 class Receiver():
 
-    def __init__(self):
-        pass
+    def __init__(self, serial_driver_path:str):
+        self.serial_driver_path = serial_driver_path
 
     # Function to receive and reassemble fragmented data
     def receive_and_reassemble_data(self,expected_data_length:int):
-        mavlink_connection = mavutil.mavlink_connection('udpin:0.0.0.0:14550')
+        mavlink_connection = mavutil.mavlink_connection(self.serial_driver_path)
         received_bytes = b''
         received_text = ''
         while True:
@@ -37,7 +37,7 @@ if __name__ == '__main__':
    expected_data_length:int = 99
 
    # Start receiving and reassembling data
-   receiver:Receiver = Receiver()
+   receiver:Receiver = Receiver('/dev/ttyUSB0')
    reassembled_data = receiver.receive_and_reassemble_data(expected_data_length)
    #print(f"Reassembled data: {reassembled_data}")
    print(len(reassembled_data))

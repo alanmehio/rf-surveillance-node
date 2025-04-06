@@ -7,6 +7,7 @@ import logging
 
 
 from device_manager import DeviceManager
+from model.rf_model import HighPowerSample, HighPowerFrequency
 
 
 
@@ -52,7 +53,8 @@ class Scanner(Thread):
             power = 10*np.log10(np.mean(spectrum))
             if(power> self.power_threshold): # configure the power to send the sample
                 self.logger.info(f'{self.name:} power is {power}')
-                DataBroker.q.put(samples) # sending the samples for config threshold power
+                high_power_sample = HighPowerSample(power,freq,samples)
+                DataBroker.q.put(high_power_sample) # sending the samples for config threshold power
             power_levels.append(power)
         
         self.sdr.close()
@@ -62,7 +64,8 @@ class Scanner(Thread):
         high_power_freqs = self.frequencies[high_power_indices]/1e6 # numpy array sending array of indices  into a np array
         self.logger.info(f'{self.name}: High Power frequencies detected at (MHz): {high_power_freqs}')
         self.logger.info(f'{self.name}: Sending the result to the queue')
-        DataBroker.q.put(high_power_freqs)
+        high_power_freqs = HighPowerFrequency(threshold,high_power_freqs)
+        DataBroker.q.put(high_power_freqs) # send frequencies with high power exceeding threshold
 
 
 

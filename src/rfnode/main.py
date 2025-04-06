@@ -65,4 +65,4 @@ def main()-> None:
 
 # this is important so that it does not run from pytest 
 if __name__ == "__main__": 
-    run()
+    main()

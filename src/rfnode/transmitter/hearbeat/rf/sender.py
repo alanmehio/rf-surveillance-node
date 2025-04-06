@@ -29,11 +29,11 @@ import pymavlink.dialects.v20.all as dialect
 # Import common module for MAVLink 2
 from pymavlink.dialects.v20 import common as mavlink2
 class Sender():
-    def __init__(self):
-        pass
+    def __init__(self, serial_driver_path:str):
+        self.serial_driver_path = serial_driver_path
 
     def send_heartbeat(self):
-        master = mavutil.mavlink_connection("/dev/ttyUSB0")
+        master = mavutil.mavlink_connection(self.serial_driver_path)
        # master.wait_heartbeat() # it blocks the send waiting the receiver which is not the case 
         heartbeat_msg = master.mav.heartbeat_encode(
         type=mavutil.mavlink.MAV_TYPE_QUADROTOR,
@@ -52,7 +52,7 @@ class Sender():
             time.sleep(1)
     
 if(__name__) == '__main__':
-    sender = Sender()
+    sender = Sender("/dev/ttyUSB0")
     sender.send_heartbeat()
 
     

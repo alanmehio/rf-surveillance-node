@@ -20,7 +20,7 @@ class DataBroker():
         while True:
             self.logger.info('inside the worker now ..')
             obj = DataBroker.q.get() # blocks until an element found in queue
-            self.logger.info(f'Working items type {type(obj)}')
+            #self.logger.info(f'Working items type {type(obj)}')
         
             # check for the element type 
             if isinstance(obj,HighPowerSample):

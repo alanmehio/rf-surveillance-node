@@ -43,13 +43,13 @@ class Scanner(Thread):
         self.logger.info(f'{self.name}: Starting scanner')
         power_levels = []
         stop_freq = self.frequencies[   len(self.frequencies)-1]
-        print(f'Alan stop_freq {stop_freq/1e6}')
+        print(f'stop_freq {stop_freq/1e6}')
         self.logger.info(f'{self.name:} Scanning from {self.frequencies[0]/1e6} MHz to {stop_freq/1e6} MHz...')
 
         for freq in self.frequencies:
             self.sdr.center_freq =freq
             # DEFAULT_READ_SIZE = 1024
-            samples = self.sdr.read_samples()
+            samples = self.sdr.read_samples(self.sample_size)
             spectrum = np.fft.fftshift(np.abs(np.fft.fft(samples))**2)
             power = 10*np.log10(np.mean(spectrum))
             if(power> self.power_threshold): # configure the power to send the sample

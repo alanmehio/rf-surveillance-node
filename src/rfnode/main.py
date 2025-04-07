@@ -12,9 +12,9 @@ import argparse
 
 
 '''
-$ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance-node/src
+$ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance-center/src
 $ pwd 
- /home/alan/workspace-python/RTL-SDR/rf-surveillance-node/src
+ /home/alan/workspace-python/RTL-SDR/rf-surveillance-center/src
 $ python3 rfnode setting.json -vvv -ld /home/alan/tmp
 '''
 def main()-> None:

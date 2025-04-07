@@ -48,11 +48,12 @@ class Scanner(Thread):
 
         for freq in self.frequencies:
             self.sdr.center_freq =freq
-            samples = self.sdr.read_samples(self.sample_size)
+            # DEFAULT_READ_SIZE = 1024
+            samples = self.sdr.read_samples()
             spectrum = np.fft.fftshift(np.abs(np.fft.fft(samples))**2)
             power = 10*np.log10(np.mean(spectrum))
             if(power> self.power_threshold): # configure the power to send the sample
-                self.logger.info(f'{self.name:} power is {power}')
+                self.logger.info(f'{self.name:} freq is {freq} power is {power}')
                 high_power_sample = HighPowerSample(power,freq,samples)
                 DataBroker.q.put(high_power_sample) # sending the samples for config threshold power
             power_levels.append(power)

@@ -50,7 +50,7 @@ class HighPowerSample(object):
         d:dict = {
                     "power": str(self.power),
                     "center_frequency": feq,
-                    "now": datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'),
+                    "now": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                     "samples": json_str
            
             }
@@ -77,7 +77,7 @@ class HighPowerFrequency(object):
     def to_json(self)->str:
         frequencies_str = json.dumps(self.frequencies.tolist())
         d:dict = { "threshold_power":str(self.threshold_power),
-                   "now": datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'),
+                   "now": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                    "frequencies": frequencies_str
                   
                   }

@@ -11,6 +11,10 @@ class Util:
         frequencies = np.arange(freq_start, freq_end, freq_step, np.int64)
         return  np.array_split(frequencies,device_amount) # split of equal or near-equal size
     
+    @classmethod
+    def convert ()->str:
+        return "blasss sds sf sdf"
+    
 
 class NumpyComplexEncoder(json.JSONEncoder):
 

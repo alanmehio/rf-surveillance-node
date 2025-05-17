@@ -7,10 +7,10 @@ $ python rfcentral
 $ python rfnode
 $ python rfsink 
 '''
-from rfcentral.rf_receiver import Receiver
+from rf_receiver.css.receiver import Receiver
 
 def main()-> None:
-    receiver = Receiver()
+    receiver = Receiver('dev/ttyACM0')
     receiver.start()
    
 

@@ -10,7 +10,7 @@ $ python rfsink
 from rf_receiver.css.receiver import Receiver
 
 def main()-> None:
-    receiver = Receiver('dev/ttyACM0')
+    receiver = Receiver('COM4')
     receiver.start()
    
 

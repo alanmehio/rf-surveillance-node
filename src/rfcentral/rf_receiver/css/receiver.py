@@ -4,17 +4,18 @@ from datetime import datetime
 import time
 
 
-class Receiver(Thread):
+#class Receiver(Thread):
+class Receiver():
 
     def __init__(self, port:str):
-        Thread.__init__(self)
+        #Thread.__init__(self)
         self.port = port
 
 
-    def run(self):
+    def start(self):
         print(f'Frequency(Mhz)\t Power(dBm)\t time\t')
         try:
-            ser = Serial(port="/dev/ttyACM0", baudrate=115200)
+            ser = Serial(port=self.port, baudrate=115200)
             while True:
             # color 
             # see https://vascosim.medium.com/how-to-print-colored-text-in-python-52f6244e2e30
@@ -35,3 +36,7 @@ class Receiver(Thread):
             time.sleep(60) # wait 1 minutes
             pass
 
+
+if __name__ == "__main__":
+    receiver = Receiver("COM4")
+    receiver.start()

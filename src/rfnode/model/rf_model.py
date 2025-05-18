@@ -43,7 +43,13 @@ class HighPowerSample(object):
         self.center_frequency = center_frequency
         self.samples = samples
         self.date_time = datetime.now()
-
+    
+    def get_frequency(self)->float:
+        return self.center_frequency
+    
+    def get_power(self)->float:
+        return self.power
+    
     def to_json(self,clazz=type[json.JSONEncoder])->str:
         json_str:str  = json.dumps(self.samples.tolist(), cls=clazz)
         feq: str = str(self.center_frequency)

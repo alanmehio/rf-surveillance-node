@@ -29,8 +29,8 @@ class DataBroker():
             if isinstance(obj,HighPowerSample):
 
                 #obj_str = obj.to_json(NumpyComplexEncoder) Alan in V2
-                payload:str = str(obj.get_frequency()) + "|" + str(obj.get_power())
-                self.sender.send("15.55|50.55")
+                payload:str = str(round(obj.get_frequency(),2)) + "|" + str(round(obj.get_power(),2))
+                self.sender.send(payload)
                 time.sleep(self.hold) # 200 ms is 0.2 
                 #self.logger.info(f'Got the HighPowerSample {obj_str}')
             elif isinstance(obj,HighPowerFrequency):

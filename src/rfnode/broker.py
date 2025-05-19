@@ -1,4 +1,5 @@
 import queue
+import time
 import numpy as np
 from threading import Thread
 import logging
@@ -7,25 +8,31 @@ import json
 from common.util import NumpyComplexEncoder
 from model.rf_model import HighPowerSample, HighPowerFrequency
 from device_manager import DeviceManager
-from transmitter.fragments.rf.sender import Sender
+from rf_sender.css.sender import Sender
 
 class DataBroker():
     q = queue.Queue()
 
-    def __init__(self):
+    def __init__(self,hold:float=0.2):
         self.logger = logging.getLogger("Broker")
-        #FIXME Alan just persist to database now 
+        self.hold= hold
+
+    def set_rf_sender(self,sender:Sender)->None:
+        self.sender = sender
 
     def worker(self):
         while True:
             self.logger.info('inside the worker now ..')
             obj = DataBroker.q.get() # blocks until an element found in queue
-            #self.logger.info(f'Working items type {type(obj)}')
         
             # check for the element type 
             if isinstance(obj,HighPowerSample):
-                obj_str = obj.to_json(NumpyComplexEncoder)
-                self.logger.info(f'Got the HighPowerSample {obj_str}')
+
+                #obj_str = obj.to_json(NumpyComplexEncoder) Alan in V2
+                payload:str = str(obj.get_frequency()) + "|" + str(obj.get_power())
+                self.sender.send("15.55|50.55")
+                time.sleep(self.hold) # 200 ms is 0.2 
+                #self.logger.info(f'Got the HighPowerSample {obj_str}')
             elif isinstance(obj,HighPowerFrequency):
                 obj_str = obj.to_json()
                 self.logger.info(f' Got the HighPowerFrequency  {obj_str}')

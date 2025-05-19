@@ -1,8 +1,10 @@
 {
   "freq_start":"103.5",
-  "freq_end":"105.5",
+  "freq_end":"109.5",
   "freq_step":"100",
   "sample_size":"1024",
   "sample_rate":"3.2",
-  "power_threshold":"28.00"
+  "power_threshold":"20.00",
+  "rf_sender_port":"\/dev\/ttyACM0",
+  "rf_sleep_time": "0.5"
 }

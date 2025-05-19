@@ -10,11 +10,12 @@ $ python rfsink
 from rf_receiver.css.receiver import Receiver
 
 def main()-> None:
-    receiver = Receiver('dev/ttyACM0')
+    receiver = Receiver('COM4') # FiXME alan send as argument 
     receiver.start()
    
 
 # this is important so that it does not run from pytest 
 if __name__ == "__main__": 
-    main()
+   # main()
+   print("Hi alan")
 

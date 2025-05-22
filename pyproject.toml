@@ -1,35 +1,33 @@
-# BUILD
 
+# BUILD
+# Poetry https://python-poetry.org/docs/pyproject/
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-# Poetry see https://python-poetry.org/docs/pyproject/
-
-# Information required for building (sdist/wheel)
-## Also renders on pypi as 'subtitle'
-[tool.poetry]
-name = "rf-surveillance-node"
-version = "0.1.0"
-description = "RF node "
-authors = ["Alan"]
-maintainers = ["Alan"]
+[project]
+name = "rf-surveillance"
+version = "1.0.0"   # see dynamic version plugin https://pypi.org/project/poetry-dynamic-versioning/
+description = "Radio Frequency Surveillance"
+authors = [{name="Alan"}] # must be an object
+maintainers = [{name="Alan"}] # must be an object 
 license = "AGPL-3.0-only"
 readme = "README.rst"
 
-homepage = "https://github.com/alammehio/rf-surveillance-node"
-repository = "https://github.com/alammehio/rf-surveillance-node"
-documentation = "https://rf-surveillance-node.readthedocs.io/"
+homepage = "https://github.com/Issamricin/rf-surveillance"
+repository = "https://github.com/Issamricin/rf-surveillance"
+documentation = "https://rf-surveillance.readthedocs.io/"
 
 keywords = [
-    "Radio Frequency Node", "RF",
+    "RF", "RF surveillance", "Radio Frequency Surveillance", 
 ]
+
+requires-python = ">=3.8"
 
 # Troves classifer see https://pypi.org/classifiers/
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Manufacturing",
-    "Intended Audience :: End Users/Desktop",
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Natural Language :: English",
     "Operating System :: Unix",
@@ -42,11 +40,47 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Topic :: Desktop Environment",
+    "Topic :: Desktop Environment","Server",
 ]
 
+
+# PyPi url links, that appear in 'Project Links' section
+urls."Bug Tracker" = "https://github.com/Issamricin/rf-surveillance/issues"
+urls."CI: Github Actions" = "https://github.com/Issamricin/rf-surveillance/actions"
+urls.Documentation = "https://rf-surveillance.readthedocs.io/"
+urls."Source Code" = "https://github.com/Issamricin/rf-surveillance"
+urls.Changelog = "https://github.com/Issamricin/rf-surveillance/blob/master/CHANGELOG.rst"
+urls."Code of Conduct" = "https://github.com/Issamricin/rf-surveillance/blob/master/CONTRIBUTING.md"
+
+
+
+
+### Dependency Constraints, aka Requirements ###
+dependencies = [
+  "pyrtlsdr>=0.3.0",
+  "numpy>=2.2.6",
+  "pyserial>=3.5",
+]
+
+## optional dependency for test or other purpose 
+## Install in edit mode with the test dependencies 
+## $ pip install -e .  rf-surveillance[test]
+## or 
+## $ pip install -e . [test]
+[project.optional-dependencies]
+test = [
+  "pytest>=8.0.0",
+  "pytest-mock>=3.14",
+  "pytest-cov>4.1.0",
+]
+
+
+# Information required for building (sdist/wheel)
+[tool.poetry]
 packages = [
-    { include = "rf-node", from = "src" },
+    { include = "rfnode", from = "src" },
+    { include = "rfcentral", from = "src" },
+    { include = "rfsink", from = "src" },
 ]
 
 include = [
@@ -78,33 +112,7 @@ exclude = [
     ".travis.yml"
 ]
 
-# PyPi url links, that appear in 'Project Links' section
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/alammehio/rf-surveillance/issues"
-"CI: Github Actions" = "https://github.com/alammehio/rf-surveillance/actions"
-"Documentation" = "https://rf-surveillance.readthedocs.io/"
-"Source Code" = "https://github.com/alammehio/rf-surveillance"
-"Changelog" = "https://github.com/alammehio/rf-surveillance/blob/master/CHANGELOG.rst"
-"Code of Conduct" = "https://github.com/alammehio/rf-surveillance/blob/master/CONTRIBUTING.md"
 
-
-
-
-### Dependency Constraints, aka Requirements ###
-[tool.poetry.dependencies]
-python = ">=3.10,<=3.13"
-
-
-
-# Test: packages imported in test code and packages required for the "test runner"
-pytest = { version = "^8.0.0", optional = true }
-pytest-cov = { version = "^4.1.0", optional = true }
-pytest-explicit = { version = "^1.0.1", optional = true }
-pytest-xdist = { version = "^3.5.0", optional = true }
-pytest-qt = {version="4.4.0", optional =true}
-
-# Type Checking
-mypy = { version = "^1.8.0", optional = true }
 
 # Docs: dev and build dependencies
 sphinx = { version = ">=8.1.3", optional = true }
@@ -115,18 +123,14 @@ sphinx-autobuild = { version = "^2024.10.3", optional = true }
 sphinx-inline-tabs = { version = "^2023.4.21", optional = true, python = ">=3.8,<3.13" }
 sphinxcontrib-mermaid = { version = "^1.0.0", optional = true, python = ">=3.7,<3.13" }
 
-### mypy config 
-# see https://mypy.readthedocs.io/en/stable/config_file.html
-### see https://stackoverflow.com/questions/72345536/how-to-avoid-mypy-checking-explicitly-excluded-but-imported-modules-without-ma
-### see https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
-[[tool.mypy.overrides]]
-#module =["PySide6.*"]
-ignore_errors = true
-#disable_error_code = ["syntax"]
 
 
-[tool.poetry.scripts]
- cli = 'rf-node.cli:main'
+#https://python-poetry.org/docs/pyproject/#scripts
+# we will have the rfnode, rfcentral and rfsink  script installed which will execute the main function in the console module in the dmcview package.
+[project.scripts]
+rfnode = 'rfnode.main:main'
+rfcentral = 'rfcentral.main:main'
+rfsink = 'rfsink.main:main'
 
 [tool.poetry.extras] #see https://realpython.com/dependency-management-python-poetry/
  docs = ["sphinx", "sphinx-rtd-theme", "sphinx-notfound-page", "sphinxcontrib-spelling"]
@@ -135,25 +139,6 @@ ignore_errors = true
 ##########
 # TOOLS
 ##########
-
-# see  https://docs.pytest.org/en/stable/reference/customize.html (pyproject.toml)
-# QT fixutre see https://pytest-qt.readthedocs.io/en/latest/intro.html
-[tool.pytest.ini_options]
-minversion = "6.2"
-qt_api="pyqt5"
-addopts = "--strict-markers"
-markers = [
-    "slow: Marks a slow test",
-    "integration: Integration Tests",
-    "network_bound: Require internet connection",
-]
-testpaths = [
-    "tests",
-]
-explicit-only = [
-    "integration",
-    "network_bound",
-]
 
 # see https://black.readthedocs.io/en/stable/  code format with max line 95
 [tool.black]
@@ -175,6 +160,5 @@ skips = [
     "B101","B311"
 ]
 
-# see scripts/parse_version.py 
-[tool.software-release]
-version_variable = "src/rf-node/__init__.py:__version__"
+
+

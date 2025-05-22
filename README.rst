@@ -6,36 +6,36 @@ Radio Frequency Surveillance Center which receive alarm from different nodes
 
 .. start-badges see https://shields.io/badges and collection see https://github.com/inttter/md-badges
 
-| |build| |release_version| |wheel| |supported_versions|
-| |docs| |pylint| |docs_pass|
-| |ruff| |gh-lic| |commits_since_specific_tag_on_main| |commits_since_latest_github_release|
+| |build| |release_version| |wheel| 
+| |docs| |pylint| |supported_versions|
+| |ruff| |gh-lic| |commits_since_specific_tag_on_main|
 
 
-|
-| **Code:** https://github.com/alanmehifo/rf-surveillance
-| **Docs:** https://rf-surveillance.readthedocs.io/en/latest/
-| **PyPI:** https://pypi.org/project/rf-surveillance/
-| **CI:** https://github.com/alanmehio/rf-surveillance/actions/
-  
-|
-|
-| |dmc_image|
 
-|dmc_gif|
+
+|rf_gif|
 
 Features
 ========
 
-1. **dmcview** `python package`
+1. **rfnode** `python package`
+  
+   a. Feature one 
+   b. Feature two 
+   c. Feature three
 
-   a. View Object Azimuth, Inclindation(Elevation) and Bank; also View Declination(Offset from real North)  
-   b. View animation to reflect real DMC device in 2D. Acceleration is not implemented yet 
-2. Tested against Linux(ubuntu-latest) `platforms` and `python` 3.12.3
-3. See `TODO <https://github.com/alammehio/rf-surveillance/blob/master/TODO.rst>`_.
+1. **rfcentral** `python package`
+  
+   a. Feature one 
+   b. Feature two 
+   c. Feature three
 
-Technical Debt
-==============
-See `Technical Debt <https://github.com/alammehio/rf-surveillance/blob/master/TECHNICALDEBT.rst>`_.
+1. **rfsink** `python package`
+  
+   a. Feature one 
+   b. Feature two 
+   c. Feature three
+
 
 Change Log
 ==========
@@ -136,9 +136,5 @@ License
 
 .. Local Image as link
 
-.. |dmc_image| image:: https://raw.githubusercontent.com/alammehio/rf-surveillance/master/media/xxxx.png
-                :alt: DMC view which shows all the value. 2D view ; 3D view will contains 3 dimensions acceleration
-
-.. |dmc_gif| image:: https://raw.githubusercontent.com/alammehio/rf-surveillance/master/media/xxx.gif
-   :alt: Demo Preview
-   :width: 600
+.. |rf_image| image:: https://raw.githubusercontent.com/alammehio/rf-surveillance/master/media/xxxx.png
+                :alt: RF Surveillance

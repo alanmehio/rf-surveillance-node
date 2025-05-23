@@ -46,14 +46,6 @@ Change Log
 ==========
  `Change Log <https://github.com/alanmehio/rf-surveillance/blob/main/CHANGELOG.rst>`_.
 
-How to Contribute
-=================
- `Contribute <https://github.com/alanmehio/rf-surveillance/blob/main/CONTRIBUTING.md>`_.
-
-Development
-===========
-| `Development <https://github.com/alanmehio/rf-surveillance/blob/main/docs/source/contents/development.rst>`_.
-
 Quickstart
 ==========
 | `Usage <https://github.com/alanmehio/rf-surveillance/blob/main/docs/source/contents/usage.rst>`_.

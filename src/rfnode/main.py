@@ -8,13 +8,14 @@ from device_manager import DeviceManager
 from common.setting import Setting
 from common.log_manager import LogManager
 from common.util import Util
+from rf_sender.css.sender import Sender
 import argparse
 
 
 '''
-$ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance-node/src
+$ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src
 $ pwd 
- /home/alan/workspace-python/RTL-SDR/rf-surveillance-node/src
+ /home/alan/workspace-python/RTL-SDR/rf-surveillance/src
 $ python3 rfnode setting.json -vvv -ld /home/alan/tmp
 '''
 def main()-> None:
@@ -28,7 +29,11 @@ def main()-> None:
     LogManager().config_logger(args.verbose, args.log_directory)
     Setting.load_setting(args.setting)
 
-    data_broker = DataBroker()
+    data_broker = DataBroker(Setting.rf_sleep_time)
+    sender:Sender = Sender(Setting.rf_sender_port)
+    sender.open()
+    data_broker.set_rf_sender(sender)
+    
     data_broker.start()
     
     serial_numbers = DeviceManager.get_device_serial_list()
@@ -65,4 +70,4 @@ def main()-> None:
 
 # this is important so that it does not run from pytest 
 if __name__ == "__main__": 
-    run()
+    main()

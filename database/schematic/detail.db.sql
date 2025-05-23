@@ -1,0 +1,30 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "Frequency" (
+	"id"	INTEGER,
+	"frequency"	INTEGER NOT NULL,
+	"power"	REAL NOT NULL,
+	"datetime "	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "FrequencySamples" (
+	"id"	INTEGER,
+	"fk"	INTEGER,
+	"real"	REAL,
+	"imag"	REAL,
+	PRIMARY KEY("id" AUTOINCREMENT),
+	FOREIGN KEY("fk") REFERENCES "Frequency"
+);
+CREATE TABLE IF NOT EXISTS "Power" (
+	"id"	INTEGER,
+	"power"	REAL NOT NULL,
+	"datetime"	TEXT NOT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "PowerFrequencies" (
+	"id"	INTEGER,
+	"fk"	INTEGER,
+	"frequency"	INTEGER NOT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT),
+	FOREIGN KEY("fk") REFERENCES "Power"
+);
+COMMIT;

@@ -7,6 +7,7 @@ import logging
 
 
 from device_manager import DeviceManager
+from model.rf_model import HighPowerSample, HighPowerFrequency
 
 
 
@@ -40,30 +41,45 @@ class Scanner(Thread):
 
     def run(self):
         self.logger.info(f'{self.name}: Starting scanner')
-        power_levels = []
-        stop_freq = self.frequencies[len(self.frequencies)-1]
-        print(f'Alan stop_freq {stop_freq/1e6}')
+        
+        stop_freq = self.frequencies[   len(self.frequencies)-1]
+        start_freq = self.frequencies[0]
+        print(f'start freq {start_freq/1e6}')
+        print(f'stop_freq {stop_freq/1e6}')
         self.logger.info(f'{self.name:} Scanning from {self.frequencies[0]/1e6} MHz to {stop_freq/1e6} MHz...')
+        counter = 0
+        print("\n")
+        while True:
+            counter+=1
+            print(f"SCANING-->iteration:{counter}")
+            self.do_run()
+            print("\n\n")
+           
+        self.sdr.close()
 
+        
+
+    def do_run(self)->None:
+        power_levels = []
         for freq in self.frequencies:
             self.sdr.center_freq =freq
+            # DEFAULT_READ_SIZE = 1024
             samples = self.sdr.read_samples(self.sample_size)
             spectrum = np.fft.fftshift(np.abs(np.fft.fft(samples))**2)
             power = 10*np.log10(np.mean(spectrum))
             if(power> self.power_threshold): # configure the power to send the sample
-                self.logger.info(f'{self.name:} power is {power}')
-                DataBroker.q.put(samples) # sending the samples for config threshold power
-            power_levels.append(power)
-        
-        self.sdr.close()
-
+                self.logger.info(f'{self.name:} freq is {freq} power is {power}')
+                high_power_sample = HighPowerSample(power,freq/1e6,samples)
+                DataBroker.q.put(high_power_sample) # sending the samples for config threshold power
+        power_levels.append(power)
         threshold = np.mean(power_levels) + np.std(power_levels)
         high_power_indices = np.where(np.array(power_levels) > threshold)[0] # tuple (np.array(),)
         high_power_freqs = self.frequencies[high_power_indices]/1e6 # numpy array sending array of indices  into a np array
         self.logger.info(f'{self.name}: High Power frequencies detected at (MHz): {high_power_freqs}')
         self.logger.info(f'{self.name}: Sending the result to the queue')
-        DataBroker.q.put(high_power_freqs)
-
+        high_power_freqs = HighPowerFrequency(threshold,high_power_freqs)
+        DataBroker.q.put(high_power_freqs) # send frequencies with high power exceeding threshold
+    
 
 
 if __name__ == "__main__":

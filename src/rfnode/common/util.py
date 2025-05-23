@@ -1,4 +1,5 @@
 import numpy as np
+import json
 
 class Util:
 
@@ -10,6 +11,20 @@ class Util:
         frequencies = np.arange(freq_start, freq_end, freq_step, np.int64)
         return  np.array_split(frequencies,device_amount) # split of equal or near-equal size
     
+    @classmethod
+    def convert ()->str:
+        return "blasss sds sf sdf"
+    
+
+class NumpyComplexEncoder(json.JSONEncoder):
+
+    def default(self, obj)->any:
+        
+        if isinstance(obj,complex):
+            return (obj.real,obj.imag)
+        else:
+            return None
+        
 
 
 if __name__ == '__main__':

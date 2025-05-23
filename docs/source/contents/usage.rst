@@ -22,25 +22,35 @@ Assuming you have 'activated' a `python virtual environment`:
 Simple Use Case
 ---------------
 
-| Common Use Case for the dmcview is 
+| Common Use Case for the dmcview in input mode
 
 .. code-block:: shell
 
-  python3 dmcview.main.py -a 45.5 -d 5.6 -b 30.35
+  dmcview -a 45.5 -d 5.6 -b 30.35 -e 15.23 -ac 14.21 13.0 14.5
 
-| **a**: azimuth angle in degree.
-| **d**: declination angle in degree which is the difference between Real North and Magnetic North.
-| **b**: Bank or the angle of inclination of the object from horizontal axis in degree
+| **a**: Azimuth angle in degree.
+| **d**: Declination angle in degree which is the difference between Real North and Magnetic North.
+| **b**: Bank or the angle of inclination of the object from horizontal axis in degree.
+| **e**: Elevation or angular height of a point of interest above or below the horizon, in degrees.
+| **ac**: Acceleration of the object, using 3 points vector.
 
-----------------------
-Running the Simulation
-----------------------
-| The simulation  execution gives you a real device feeling 
+|
+| Common Use Case for the dmcview in simulation mode
+
+.. code-block:: shell
+
+  dmcview -s Y
+
+
+--------------
+Running PyTest 
+--------------
+| PyTest can be run from command line.
 
 .. code-block:: shell
   
-  python3 dmcview.simulation.py
+  python -m pip install -e . dmc-view[test]
+  pytest
 
-**Ctrl + C** to terminate the execution since the simulation will run for infinite time  
 
 

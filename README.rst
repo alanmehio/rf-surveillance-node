@@ -1,41 +1,46 @@
-RF Surveillance 
+RF Surveillance
 
-Radio Frequency Surveillance Center which receive alarm from different nodes 
+| Radio Frequency Surveillance is a three  separated applications
+
 
 ------
 
 .. start-badges see https://shields.io/badges and collection see https://github.com/inttter/md-badges
 
-| |build| |release_version| |wheel| |supported_versions|
-| |docs| |pylint| |docs_pass|
-| |ruff| |gh-lic| |commits_since_specific_tag_on_main| |commits_since_latest_github_release|
+| |build| |release_version| |wheel|
+| |docs| |pylint| |supported_versions|
+| |ruff| |gh-lic| |commits_since_specific_tag_on_main|
 
 
-|
-| **Code:** https://github.com/alanmehifo/rf-surveillance
-| **Docs:** https://rf-surveillance.readthedocs.io/en/latest/
-| **PyPI:** https://pypi.org/project/rf-surveillance/
-| **CI:** https://github.com/alanmehio/rf-surveillance/actions/
-  
-|
-|
-| |dmc_image|
+RF-Node
+=======
+Different nodes sends signal based on pre-configured required power strength. Each node
+can have unlimited antenna scanners; each antenna is given a range of frequency slice to scan and report
+the power which exceed the given threshold which is defined in the setting file
+The antenna sends the signal data into a transmitter device found in the node.
+The data sent is: central frequency in MHz , the power in dBm, IQ sample (imaginary number) where the sample size is configured to 1024 numbers
 
-|dmc_gif|
+|rf_node|
 
-Features
-========
 
-1. **dmcview** `python package`
+RF-Central
+==========
+|rf_central|
 
-   a. View Object Azimuth, Inclindation(Elevation) and Bank; also View Declination(Offset from real North)  
-   b. View animation to reflect real DMC device in 2D. Acceleration is not implemented yet 
-2. Tested against Linux(ubuntu-latest) `platforms` and `python` 3.12.3
-3. See `TODO <https://github.com/alammehio/rf-surveillance/blob/master/TODO.rst>`_.
+Receive signal strength from different nodes.
+Process them and extract different meta data#
+Display the high power signal on the console and give a warning (beep) in case
+any frequency exceed the desired power defined when the RF Central application starts ( command line input)
+This application contains a calculation engine based on Machine Learning Model to find different useful information
+about the samples high power signal frequency.
 
-Technical Debt
-==============
-See `Technical Debt <https://github.com/alammehio/rf-surveillance/blob/master/TECHNICALDEBT.rst>`_.
+RF Sink
+=======
+This application is a GUI application (Desktop) which query the RF central(sever) to extract the
+already calculated meta data with different search criteria
+|rf_sink1|
+|rf_sink2|
+|rf_sink3|
 
 Change Log
 ==========
@@ -72,7 +77,7 @@ License
 
 .. _GNU Affero General Public License v3.0: https://github.com/alammehio/rf-surveillance/blob/master/LICENSE
 
- 
+
 
 .. BADGE ALIASES
 
@@ -131,14 +136,25 @@ License
     :target: https://docs.astral.sh/ruff/
 
 
-.. Local linux command: CTRL+Shift+Alt+R key 
+.. Local linux command: CTRL+Shift+Alt+R key
 
 
 .. Local Image as link
 
-.. |dmc_image| image:: https://raw.githubusercontent.com/alammehio/rf-surveillance/master/media/xxxx.png
-                :alt: DMC view which shows all the value. 2D view ; 3D view will contains 3 dimensions acceleration
 
-.. |dmc_gif| image:: https://raw.githubusercontent.com/alammehio/rf-surveillance/master/media/xxx.gif
-   :alt: Demo Preview
-   :width: 600
+.. |rf_node| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-node.png
+                :alt: RF Surveillance Node
+
+.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-central.jpeg
+                :alt: RF Surveillance Central(Server)
+
+.. |rf_sink1| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink1.jpeg
+                :alt: RF Surveillance Sink(Client)
+
+.. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink2.jpeg
+                :alt: RF Surveillance Sink(Client)
+
+.. |rf_sink3| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink3.jpeg
+                :alt: RF Surveillance Sink(Client)
+
+

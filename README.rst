@@ -1,39 +1,51 @@
-RF Surveillance 
+RF Surveillance
 
-Radio Frequency Surveillance Center which receive alarm from different nodes 
+Radio Frequency Surveillance Center which receive signal strength from different nodes.
+Different nodes sends signal based on pre-configured required power strength. Each node
+can have unlimited antenna scanners; each antenna is given a range of frequency slice. The RF
+Central process signal from different node  to extract different meta data.
+The RF Sink is a GUI application which shows different statistic values for strong
+signal (high power signal)
+
 
 ------
 
 .. start-badges see https://shields.io/badges and collection see https://github.com/inttter/md-badges
 
-| |build| |release_version| |wheel| 
+| |build| |release_version| |wheel|
 | |docs| |pylint| |supported_versions|
 | |ruff| |gh-lic| |commits_since_specific_tag_on_main|
 
 
+RF-Node
+=======
+
+|rf_node|
 
 
-|rf_gif|
+RF-Central
+==========
+|rf_central|
 
 Features
 ========
 
 1. **rfnode** `python package`
-  
-   a. Feature one 
-   b. Feature two 
+
+   a. Feature one
+   b. Feature two
    c. Feature three
 
 1. **rfcentral** `python package`
-  
-   a. Feature one 
-   b. Feature two 
+
+   a. Feature one
+   b. Feature two
    c. Feature three
 
 1. **rfsink** `python package`
-  
-   a. Feature one 
-   b. Feature two 
+
+   a. Feature one
+   b. Feature two
    c. Feature three
 
 
@@ -72,7 +84,7 @@ License
 
 .. _GNU Affero General Public License v3.0: https://github.com/alammehio/rf-surveillance/blob/master/LICENSE
 
- 
+
 
 .. BADGE ALIASES
 
@@ -131,10 +143,12 @@ License
     :target: https://docs.astral.sh/ruff/
 
 
-.. Local linux command: CTRL+Shift+Alt+R key 
+.. Local linux command: CTRL+Shift+Alt+R key
 
 
 .. Local Image as link
 
-.. |rf_image| image:: https://raw.githubusercontent.com/alammehio/rf-surveillance/master/media/xxxx.png
-                :alt: RF Surveillance
+.. |rf_central| image:: https://raw.githubusercontent.com/alammehio/rf-surveillance/v1/media/rf-central.jpeg
+                :alt: RF Surveillance Node
+
+

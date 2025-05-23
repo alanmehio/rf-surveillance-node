@@ -1,11 +1,6 @@
 RF Surveillance
 
-Radio Frequency Surveillance Center which receive signal strength from different nodes.
-Different nodes sends signal based on pre-configured required power strength. Each node
-can have unlimited antenna scanners; each antenna is given a range of frequency slice. The RF
-Central process signal from different node  to extract different meta data.
-The RF Sink is a GUI application which shows different statistic values for strong
-signal (high power signal)
+| Radio Frequency Surveillance is a three  separated applications
 
 
 ------
@@ -19,6 +14,12 @@ signal (high power signal)
 
 RF-Node
 =======
+Different nodes sends signal based on pre-configured required power strength. Each node
+can have unlimited antenna scanners; each antenna is given a range of frequency slice to scan and report
+the power which exceed the given threshold which is defined in the setting file
+The antenna sends the signal data into a transmitter device found in the node.
+The data sent is: central frequency in MHz , the power in dBm, IQ sample (imaginary number) where the sample size is configured to 1024 numbers
+
 |rf_node|
 
 
@@ -26,27 +27,20 @@ RF-Central
 ==========
 |rf_central|
 
-Features
-========
+Receive signal strength from different nodes.
+Process them and extract different meta data#
+Display the high power signal on the console and give a warning (beep) in case
+any frequency exceed the desired power defined when the RF Central application starts ( command line input)
+This application contains a calculation engine based on Machine Learning Model to find different useful information
+about the samples high power signal frequency.
 
-1. **rfnode** `python package`
-
-   a. Feature one
-   b. Feature two
-   c. Feature three
-
-1. **rfcentral** `python package`
-
-   a. Feature one
-   b. Feature two
-   c. Feature three
-
-1. **rfsink** `python package`
-
-   a. Feature one
-   b. Feature two
-   c. Feature three
-
+RF Sink
+=======
+This application is a GUI application (Desktop) which query the RF central(sever) to extract the
+already calculated meta data with different search criteria
+|rf_sink1|
+|rf_sink2|
+|rf_sink3|
 
 Change Log
 ==========
@@ -152,6 +146,15 @@ License
                 :alt: RF Surveillance Node
 
 .. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-central.jpeg
-                :alt: RF Surveillance Central
+                :alt: RF Surveillance Central(Server)
+
+.. |rf_sink1| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-sink1.jpeg
+                :alt: RF Surveillance Sink(Client)
+
+.. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-sink2.jpeg
+                :alt: RF Surveillance Sink(Client)
+
+.. |rf_sink3| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-sink3.jpeg
+                :alt: RF Surveillance Sink(Client)
 
 

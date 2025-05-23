@@ -142,19 +142,19 @@ License
 .. Local Image as link
 
 
-.. |rf_node| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-node.png
+.. |rf_node| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-node.png
                 :alt: RF Surveillance Node
 
-.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-central.jpeg
+.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-central.jpeg
                 :alt: RF Surveillance Central(Server)
 
-.. |rf_sink1| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-sink1.jpeg
+.. |rf_sink1| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink1.jpeg
                 :alt: RF Surveillance Sink(Client)
 
-.. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-sink2.jpeg
+.. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink2.jpeg
                 :alt: RF Surveillance Sink(Client)
 
-.. |rf_sink3| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-sink3.jpeg
+.. |rf_sink3| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink3.jpeg
                 :alt: RF Surveillance Sink(Client)
 
 

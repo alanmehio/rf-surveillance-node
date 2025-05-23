@@ -44,19 +44,19 @@ already calculated meta data with different search criteria
 
 Change Log
 ==========
- `Change Log <https://github.com/alammehio/rf-surveillance/blob/master/CHANGELOG.rst>`_.
+ `Change Log <https://github.com/alammehio/rf-surveillance/blob/main/CHANGELOG.rst>`_.
 
 How to Contribute
 =================
- `Contribute <https://github.com/alammehio/rf-surveillance/blob/master/CONTRIBUTING.md>`_.
+ `Contribute <https://github.com/alammehio/rf-surveillance/blob/main/CONTRIBUTING.md>`_.
 
 Development
 ===========
-| `Development <https://github.com/alammehio/rf-surveillance/blob/master/docs/source/contents/development.rst>`_.
+| `Development <https://github.com/alammehio/rf-surveillance/blob/main/docs/source/contents/development.rst>`_.
 
 Quickstart
 ==========
-| `Usage <https://github.com/alammehio/rf-surveillance/blob/master/docs/source/contents/usage.rst>`_.
+| `Usage <https://github.com/alammehio/rf-surveillance/blob/main/docs/source/contents/usage.rst>`_.
 
 
 License
@@ -75,7 +75,7 @@ License
 
 .. LINKS
 
-.. _GNU Affero General Public License v3.0: https://github.com/alammehio/rf-surveillance/blob/master/LICENSE
+.. _GNU Affero General Public License v3.0: https://github.com/alammehio/rf-surveillance/blob/main/LICENSE
 
 
 
@@ -84,9 +84,9 @@ License
 .. Build Status
 .. Github Actions: Test Workflow Status for specific branch <branch>
 
-.. |build| image:: https://img.shields.io/github/workflow/status/alammehio/rf-surveillance/Test%20Python%20Package/master?label=build&logo=github-actions&logoColor=%233392FF
+.. |build| image:: https://img.shields.io/github/workflow/status/alammehio/rf-surveillance/Test%20Python%20Package/main?label=build&logo=github-actions&logoColor=%233392FF
     :alt: GitHub Workflow Status (branch)
-    :target: https://github.com/alammehio/rf-surveillance/actions/workflows/test.yaml?query=branch%3Amaster
+    :target: https://github.com/alammehio/rf-surveillance/actions/workflows/test.yaml?query=branch%3Amain
 
 
 .. Documentation
@@ -114,9 +114,9 @@ License
 
 .. Github Releases & Tags
 
-.. |commits_since_specific_tag_on_main| image:: https://img.shields.io/github/commits-since/alammehio/rf-surveillance/v0.0.1/master?color=blue&logo=github
+.. |commits_since_specific_tag_on_main| image:: https://img.shields.io/github/commits-since/alammehio/rf-surveillance/v0.0.1/main?color=blue&logo=github
     :alt: GitHub commits since tagged version (branch)
-    :target: https://github.com/alammehio/rf-surveillance/compare/v0.0.1..master
+    :target: https://github.com/alammehio/rf-surveillance/compare/v0.0.1..main
 
 .. |commits_since_latest_github_release| image:: https://img.shields.io/github/commits-since/alammehio/rf-surveillance/latest?color=blue&logo=semver&sort=semver
     :alt: GitHub commits since latest release (by SemVer)
@@ -126,7 +126,7 @@ License
 
 .. |gh-lic| image:: https://img.shields.io/badge/license-GNU_Affero-orange
     :alt: GitHub
-    :target: https://github.com/alammehio/rf-surveillance/blob/master/LICENSE
+    :target: https://github.com/alammehio/rf-surveillance/blob/main/LICENSE
 
 
 .. Ruff linter for Fast Python Linting
@@ -142,19 +142,19 @@ License
 .. Local Image as link
 
 
-.. |rf_node| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-node.png
+.. |rf_node| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-node.png
                 :alt: RF Surveillance Node
 
-.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-central.jpeg
+.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-central.jpeg
                 :alt: RF Surveillance Central(Server)
 
-.. |rf_sink1| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink1.jpeg
+.. |rf_sink1| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-sink1.jpeg
                 :alt: RF Surveillance Sink(Client)
 
-.. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink2.jpeg
+.. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-sink2.jpeg
                 :alt: RF Surveillance Sink(Client)
 
-.. |rf_sink3| image:: https://github.com/alanmehio/rf-surveillance/blob/master/media/rf-sink3.jpeg
+.. |rf_sink3| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-sink3.jpeg
                 :alt: RF Surveillance Sink(Client)
 
 

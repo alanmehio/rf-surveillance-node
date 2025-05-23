@@ -44,19 +44,19 @@ already calculated meta data with different search criteria
 
 Change Log
 ==========
- `Change Log <https://github.com/alammehio/rf-surveillance/blob/main/CHANGELOG.rst>`_.
+ `Change Log <https://github.com/alanmehio/rf-surveillance/blob/main/CHANGELOG.rst>`_.
 
 How to Contribute
 =================
- `Contribute <https://github.com/alammehio/rf-surveillance/blob/main/CONTRIBUTING.md>`_.
+ `Contribute <https://github.com/alanmehio/rf-surveillance/blob/main/CONTRIBUTING.md>`_.
 
 Development
 ===========
-| `Development <https://github.com/alammehio/rf-surveillance/blob/main/docs/source/contents/development.rst>`_.
+| `Development <https://github.com/alanmehio/rf-surveillance/blob/main/docs/source/contents/development.rst>`_.
 
 Quickstart
 ==========
-| `Usage <https://github.com/alammehio/rf-surveillance/blob/main/docs/source/contents/usage.rst>`_.
+| `Usage <https://github.com/alanmehio/rf-surveillance/blob/main/docs/source/contents/usage.rst>`_.
 
 
 License
@@ -75,7 +75,7 @@ License
 
 .. LINKS
 
-.. _GNU Affero General Public License v3.0: https://github.com/alammehio/rf-surveillance/blob/main/LICENSE
+.. _GNU Affero General Public License v3.0: https://github.com/alanmehio/rf-surveillance/blob/main/LICENSE
 
 
 
@@ -84,9 +84,9 @@ License
 .. Build Status
 .. Github Actions: Test Workflow Status for specific branch <branch>
 
-.. |build| image:: https://img.shields.io/github/workflow/status/alammehio/rf-surveillance/Test%20Python%20Package/main?label=build&logo=github-actions&logoColor=%233392FF
+.. |build| image:: https://img.shields.io/github/workflow/status/alanmehio/rf-surveillance/Test%20Python%20Package/main?label=build&logo=github-actions&logoColor=%233392FF
     :alt: GitHub Workflow Status (branch)
-    :target: https://github.com/alammehio/rf-surveillance/actions/workflows/test.yaml?query=branch%3Amain
+    :target: https://github.com/alanmehio/rf-surveillance/actions/workflows/test.yaml?query=branch%3Amain
 
 
 .. Documentation
@@ -114,11 +114,11 @@ License
 
 .. Github Releases & Tags
 
-.. |commits_since_specific_tag_on_main| image:: https://img.shields.io/github/commits-since/alammehio/rf-surveillance/v0.0.1/main?color=blue&logo=github
+.. |commits_since_specific_tag_on_main| image:: https://img.shields.io/github/commits-since/alanmehio/rf-surveillance/v0.0.1/main?color=blue&logo=github
     :alt: GitHub commits since tagged version (branch)
-    :target: https://github.com/alammehio/rf-surveillance/compare/v0.0.1..main
+    :target: https://github.com/alanmehio/rf-surveillance/compare/v0.0.1..main
 
-.. |commits_since_latest_github_release| image:: https://img.shields.io/github/commits-since/alammehio/rf-surveillance/latest?color=blue&logo=semver&sort=semver
+.. |commits_since_latest_github_release| image:: https://img.shields.io/github/commits-since/alanmehio/rf-surveillance/latest?color=blue&logo=semver&sort=semver
     :alt: GitHub commits since latest release (by SemVer)
 
 .. LICENSE (eg AGPL, MIT)
@@ -126,7 +126,7 @@ License
 
 .. |gh-lic| image:: https://img.shields.io/badge/license-GNU_Affero-orange
     :alt: GitHub
-    :target: https://github.com/alammehio/rf-surveillance/blob/main/LICENSE
+    :target: https://github.com/alanmehio/rf-surveillance/blob/main/LICENSE
 
 
 .. Ruff linter for Fast Python Linting

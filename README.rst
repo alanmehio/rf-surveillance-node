@@ -148,7 +148,7 @@ License
 .. Local Image as link
 
 
-.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-node.png
+.. |rf_node| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-node.png
                 :alt: RF Surveillance Node
 
 .. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-central.jpeg

@@ -19,7 +19,6 @@ signal (high power signal)
 
 RF-Node
 =======
-
 |rf_node|
 
 
@@ -148,7 +147,11 @@ License
 
 .. Local Image as link
 
-.. |rf_central| image:: https://raw.githubusercontent.com/alammehio/rf-surveillance/v1/media/rf-central.jpeg
+
+.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-node.png
                 :alt: RF Surveillance Node
+
+.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/v1/media/rf-central.jpeg
+                :alt: RF Surveillance Central
 
 

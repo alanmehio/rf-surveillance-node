@@ -18,7 +18,8 @@ Different nodes sends signal based on pre-configured required power strength. Ea
 can have unlimited antenna scanners; each antenna is given a range of frequency slice to scan and report
 the power which exceed the given threshold which is defined in the setting file
 The antenna sends the signal data into a transmitter device found in the node.
-The data sent is: central frequency in MHz , the power in dBm, IQ sample (imaginary number) where the sample size is configured to 1024 numbers
+The data sent is: central frequency in MHz , the power in dBm, IQ sample (imaginary number) where the sample size is configured to 1024 numbers.
+The node works in a plug and play which means high quality SDR devices (RTL-SDR, USRP, BladeRF, HackRF etc..) can be attached to sample on much higher rate.
 
 |rf_node|
 

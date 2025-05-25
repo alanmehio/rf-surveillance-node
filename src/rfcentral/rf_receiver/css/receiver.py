@@ -40,5 +40,5 @@ class Receiver():
 
 
 if __name__ == "__main__":
-    receiver = Receiver("COM4")
+    receiver = Receiver("ttyACM0")
     receiver.start()

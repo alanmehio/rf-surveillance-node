@@ -1,9 +1,8 @@
-
 '''
-$ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance-center/src
+$ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src
 $ pwd 
- /home/alan/workspace-python/RTL-SDR/rf-surveillance-center/src
-$ python3 rfclient ????
+ /home/alan/workspace-python/RTL-SDR/rf-surveillance/src
+$ python rfsink ???
 '''
 def main()-> None:
    print("main..")

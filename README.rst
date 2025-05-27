@@ -38,8 +38,8 @@ about the samples high power signal frequency.
 RF Sink
 =======
 This application is a GUI application (Desktop) which query the RF central(sever) to extract the
-already calculated meta data with different search criteria
-|rf_sink1|
+already calculated meta data with different search criteria; the search result reveals signal meta data
+such as modulation, distance, direction, noise level, phase shift, etc..
 |rf_sink2|
 |rf_sink3|
 
@@ -140,9 +140,6 @@ License
 
 .. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-central.jpeg
                 :alt: RF Surveillance Central(Server)
-
-.. |rf_sink1| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-sink1.jpeg
-                :alt: RF Surveillance Sink(Client)
 
 .. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-sink2.jpeg
                 :alt: RF Surveillance Sink(Client)

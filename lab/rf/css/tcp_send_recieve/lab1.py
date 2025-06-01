@@ -7,6 +7,9 @@ def send()->None:
 
     for i, chunk in enumerate(chunks):
         packet = bytes([i]) + chunk  # Add packet number
+        index:int = packet[0]
+        print(packet[0]) # 
+        print(index)
         success = True  #radio.write(packet)
         if not success:
             print(f"Failed to send packet {i}")
@@ -38,8 +41,13 @@ def receive()->None:
 
 #if __name__ == '__main__':
 if __name__ == '__main__':
-    send()
+   send()
+
+
 '''
+b'\x00'
+  b'\x01'
+   b'\x02
 Add a header with total packet count or a terminator byte.
 Use CRC32 or hashes to verify integrity.
 Implement ACK/NAK for each packet.

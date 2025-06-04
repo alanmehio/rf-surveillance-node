@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 CREATE TABLE IF NOT EXISTS "Frequency" (
 	"id"	INTEGER,
-	"frequency"	INTEGER NOT NULL,
+	"frequency"	REAL NOT NULL,
 	"power"	REAL NOT NULL,
 	"datetime "	TEXT,
 	PRIMARY KEY("id" AUTOINCREMENT)
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS "Power" (
 CREATE TABLE IF NOT EXISTS "PowerFrequencies" (
 	"id"	INTEGER,
 	"fk"	INTEGER,
-	"frequency"	INTEGER NOT NULL,
+	"frequency"	REAL NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("fk") REFERENCES "Power"
 );

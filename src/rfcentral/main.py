@@ -1,12 +1,15 @@
 
 '''
 $ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src
-$ pwd 
+$ pwd
  /home/alan/workspace-python/RTL-SDR/rf-surveillance/src
 $ python rfcentral -f 50 -e 65.55 -p ttyACM0
 '''
-from argparse import ArgumentParser, Namespace  
-from rf_receiver.css.receiver import Receiver
+import platform
+from argparse import ArgumentParser, Namespace
+from .receiver import Receiver
+from .displayer import ConsoleOutput
+from .broker import DataBroker
 
 def get_cli_value()->tuple[float,float,str]:
    pass
@@ -15,7 +18,7 @@ def main()-> None:
      """
     This is the main function that executes the program.
     This function uses argparse to handle input from the command line.
-    
+
     Command-line arguments
     ----------------------
     -f : float
@@ -42,7 +45,7 @@ def main()-> None:
      parser.add_argument(
         '-p',
         help='frequency engergy power level; if exceeded will give beep as warning',
-        type=float, 
+        type=float,
         nargs='?',
         default=50.00,
         metavar='power'
@@ -54,18 +57,28 @@ def main()-> None:
         default = 'ttyACM0',
         nargs='?',
         metavar = 'device'
-               
+
      )
-     
+
      args : Namespace = parser.parse_args()
      frequency:float = args.f
      power:float = args.p
      device:str = args.d
-     receiver = Receiver(frequency=frequency, power=power, device=device) 
-     receiver.start()
-   
 
-# this is important so that it does not run from pytest 
-if __name__ == "__main__": 
+     port:str
+     if platform.system() == 'Windows':
+         port = device
+     else:
+         port ='/dev/' + device
+
+     out = ConsoleOutput(power)
+     data_broker = DataBroker()
+     data_broker.start()
+     receiver = Receiver(out, port=port)
+     receiver.receive()
+
+
+# this is important so that it does not run from pytest
+if __name__ == "__main__":
     main()
 

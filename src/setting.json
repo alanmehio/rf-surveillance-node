@@ -5,6 +5,7 @@
   "sample_size":"1024",
   "sample_rate":"3.2",
   "power_threshold":"20.00",
-  "rf_sender_port":"\/dev\/ttyACM0",
-  "rf_sleep_time": "0.5"
+  "rf_sender_port":"ttyACM0",
+  "rf_sender_port_windows":"COM3",
+  "rf_sleep_time": "0.1"
 }

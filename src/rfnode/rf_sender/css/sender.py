@@ -3,9 +3,9 @@ import threading
 import time
 
 class Sender():
-    def __init__(self, port="/dev/ttyACM0"):
+    def __init__(self, port):
          self.port = port
-    
+
     def open(self)->None:
         try:
           self.ser = Serial(self.port, baudrate=115200)
@@ -21,8 +21,8 @@ class Sender():
 
     def send(self,payload:str)->None:
         '''
-         payload example:  '12.5|35.55'
-         12.5 is Frequency in Mhz
+         payload example:  '12.55|35.55'
+         12.55 is Frequency in Mhz
          35.55 is power in dBm
         '''
         data = payload.encode()

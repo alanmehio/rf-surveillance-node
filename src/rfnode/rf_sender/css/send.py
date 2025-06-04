@@ -9,7 +9,7 @@ class Sender():
     MAX_PAYLOAD = 32  # max payload size this can change later OK Alan
     NEW_LINE =  b'\n'
 
-    def __init__(self, port:str) -> None:
+    def __init__(self, port:str, hold:float=0.1) -> None:
         self.port = port
         self.ser = Serial(port=self.port, baudrate=115200)
 
@@ -62,37 +62,3 @@ def main()->None:
 
 if __name__ == '__main__':
     main()
-
-
-    '''
-
-        # simulate receive
-        payload:str ="This is a large data payload that needs to be split into smaller packets for transmission over RF."
-        packets:list[bytes] =self.build_packet(payload)
-        length,sum = 0,0
-        value:list[bytes] = []
-        for packet in packets:
-            if self.is_header(packet):
-                length, sum = self.extract_length_checksum(packet)
-                #print(f'data length {length}')
-                print(f'checksum after {sum}')
-
-            else:
-                value.append(packet)
-                if self.is_last_packet(packet=packet):
-                    break
-        value.sort(key=self.ascending_sort)
-        assembled_packets = self.remove_index(value)
-        print(assembled_packets)
-        data_bytes = self.assemble_into_bytes(assembled_packets)
-        correct_checksum = self.is_correct_checksum(sum, data_bytes)
-        print(f'Is checksum correct {correct_checksum}')
-        data_str =  data_bytes.decode()
-        print(data_str) # FIXME contains the NEW_LINE ( char terminator)
-
-
-
-    '''
-
-
-

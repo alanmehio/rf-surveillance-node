@@ -29,7 +29,7 @@ def main()-> None:
     LogManager().config_logger(args.verbose, args.log_directory)
     Setting.load_setting(args.setting)
 
-    data_broker = DataBroker(Setting.rf_sleep_time)
+    data_broker = DataBroker()
 
     port:str =''
     if platform.system() == 'Windows':
@@ -37,8 +37,7 @@ def main()-> None:
     elif port:
             port ='/dev/' + Setting.rf_sender_port
 
-    sender:Sender = Sender(port=port)
-    sender.open()
+    sender:Sender = Sender(port=port, hold=Setting.rf_sleep_time)
     data_broker.set_rf_sender(sender)
 
     data_broker.start()

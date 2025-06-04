@@ -1,14 +1,26 @@
 import json
-
+'''
+{
+  "freq_start":"103.5",
+  "freq_end":"109.5",
+  "freq_step":"100",
+  "sample_size":"1024",
+  "sample_rate":"3.2",
+  "power_threshold":"20.00",
+  "rf_sender_port":"ttyACM0",
+  "rf_sender_port_windows":"COM3",
+  "rf_sleep_time": "0.1"
+}
+'''
 class Setting():
-    freq_start = None
-    freq_end = None
-    freq_step = None
-    sample_size = None
-    power_threshold = None
-    rf_sender_port = None
-    fr_sender_port_windows = None
-    rf_sleep_time = None
+    freq_start:float = 103.5
+    freq_end:float = 109.5
+    freq_step:int = 100
+    sample_size:int = 1024
+    power_threshold:float = 20.00
+    rf_sender_port:str = "ttyACM0"
+    fr_sender_port_windows:str = "COM3"
+    rf_sleep_time:float = 0.1
 
     @staticmethod
     def load_setting(file:str):

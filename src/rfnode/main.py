@@ -43,7 +43,7 @@ def main()-> None:
 
     serial_numbers = DeviceManager.get_device_serial_list()
     frequencies = Util.generate_array(Setting.freq_start, Setting.freq_end, Setting.freq_step, len(serial_numbers))
-    print(f' RTL SDR numbers {len(serial_numbers)}')
+    print(f'RTL SDR numbers {len(serial_numbers)}')
 
     scanners = [] # a list of scanner
 
@@ -60,7 +60,6 @@ def main()-> None:
         scanner.start()
 
     for thread in scanners:
-        print("waiting for the thread " + thread.name + " to finish")
         thread.join()
         print(f"Thread {thread.name} is finished now")
 

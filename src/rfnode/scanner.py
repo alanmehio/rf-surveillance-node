@@ -1,7 +1,7 @@
-# scan module  talk more 
+# scan module  talk more
 from rtlsdr import RtlSdr
 import numpy as np
-from threading import Thread 
+from threading import Thread
 from broker import DataBroker
 import logging
 
@@ -20,19 +20,18 @@ def display_menu():
     #      RTL SDR NODE SCANNER      #
     #                                #
     ##################################
-          Thread name here 
 
     """)
-    
+
 
 class Scanner(Thread):
 
-    def __init__(self, frequencies:list[np.int64], sample_rate:int, sample_size:int, 
+    def __init__(self, frequencies:list[np.int64], sample_rate:int, sample_size:int,
                    power_threshold: float, sdr: RtlSdr):
         Thread.__init__(self)
         self.frequencies = frequencies
         self.sample_rate = sample_rate
-        self.sample_size = sample_size 
+        self.sample_size = sample_size
         self.power_threshold = power_threshold
         self.sdr = sdr
         self.gain = 'auto'
@@ -41,7 +40,7 @@ class Scanner(Thread):
 
     def run(self):
         self.logger.info(f'{self.name}: Starting scanner')
-        
+
         stop_freq = self.frequencies[   len(self.frequencies)-1]
         start_freq = self.frequencies[0]
         print(f'start freq {start_freq/1e6}')
@@ -51,13 +50,13 @@ class Scanner(Thread):
         print("\n")
         while True:
             counter+=1
-            print(f"SCANING-->iteration:{counter}")
+            print(f"SCANNING-->iteration:{counter}")
             self.do_run()
             print("\n\n")
-           
+
         self.sdr.close()
 
-        
+
 
     def do_run(self)->None:
         power_levels = []
@@ -79,7 +78,7 @@ class Scanner(Thread):
         self.logger.info(f'{self.name}: Sending the result to the queue')
         high_power_freqs = HighPowerFrequency(threshold,high_power_freqs)
         DataBroker.q.put(high_power_freqs) # send frequencies with high power exceeding threshold
-    
+
 
 
 if __name__ == "__main__":
@@ -95,12 +94,12 @@ if __name__ == "__main__":
 
     data_broker = DataBroker()
     data_broker.start()
-    
+
 
 
 
     scanners = [] # a list of scanner
-    arrs = np.arange(105*1e6, 106*1e6, 10000) 
+    arrs = np.arange(105*1e6, 106*1e6, 10000)
     frequencies = np.split(arrs,len(serial_numbers))
     for i in (range(len(serial_numbers))):
         print(f'device index {i}')
@@ -108,12 +107,12 @@ if __name__ == "__main__":
         sample_size = 1024*1024
         sample_rate = 32*1e5 # 3.2 MHz
         power_threshold = 55.55
-        scanner = Scanner(frequencies=frequencies[i],sample_rate=sample_rate, sample_size=sample_size, 
+        scanner = Scanner(frequencies=frequencies[i],sample_rate=sample_rate, sample_size=sample_size,
         power_threshold=power_threshold,sdr=sdr)
 
         scanners.append(scanner)
 
-    
+
 
     for scanner in scanners:
         scanner.start()
@@ -125,5 +124,5 @@ if __name__ == "__main__":
 
 
 
-         
-        
+
+

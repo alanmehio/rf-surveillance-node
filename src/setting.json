@@ -1,6 +1,6 @@
 {
-  "freq_start":"103.5",
-  "freq_end":"109.5",
+  "freq_start":"100.5",
+  "freq_end":"309.5",
   "freq_step":"100",
   "sample_size":"1024",
   "sample_rate":"3.2",

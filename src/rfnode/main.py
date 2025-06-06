@@ -1,4 +1,3 @@
-""" The command line interface (CLI) parser """
 from rtlsdr import RtlSdr
 import numpy as np
 import platform
@@ -36,7 +35,7 @@ def main()-> None:
         port = Setting.rf_sender_port_windows
     else:
         port ='/dev/' + Setting.rf_sender_port
-         
+
     sender:Sender = Sender(port=port, hold=Setting.rf_sleep_time)
     data_broker.set_rf_sender(sender)
 

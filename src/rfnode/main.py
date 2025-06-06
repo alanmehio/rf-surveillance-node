@@ -34,9 +34,9 @@ def main()-> None:
     port:str =''
     if platform.system() == 'Windows':
         port = Setting.rf_sender_port_windows
-    elif port:
-            port ='/dev/' + Setting.rf_sender_port
-
+    else:
+        port ='/dev/' + Setting.rf_sender_port
+         
     sender:Sender = Sender(port=port, hold=Setting.rf_sleep_time)
     data_broker.set_rf_sender(sender)
 

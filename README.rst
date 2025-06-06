@@ -1,4 +1,5 @@
-RF Surveillance
+RF Surveillance Version 1
+=========================
 
 | Radio Frequency Surveillance is a three  separated applications
 
@@ -28,14 +29,16 @@ The node works in a plug and play which means high quality SDR devices (RTL-SDR,
 
 RF-Central
 ==========
-|rf_central|
-
 Receive signal strength from different nodes.
 Process them and extract different meta data#
 Display the high power signal on the console and give a warning (beep) in case
 any frequency exceed the desired power defined when the RF Central application starts ( command line input)
-This application contains a calculation engine based on Machine Learning Model to find different useful information
-about the samples high power signal frequency.
+This application does not contain a calculation engine based on Machine Learning Model.
+Extracting useful data from the sample signal will be implemented in version 3.
+
+|rf_central|
+|rf_central_console|
+
 
 RF Sink
 =======
@@ -145,6 +148,8 @@ License
 
 .. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-central.jpeg
                 :alt: RF Surveillance Central(Server)
+.. |rf_central_console| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/screen/rf-central-console.gif
+                :alt: RF Surveillance Central(Server) console output
 
 .. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-sink2.jpeg
                 :alt: RF Surveillance Sink(Client)

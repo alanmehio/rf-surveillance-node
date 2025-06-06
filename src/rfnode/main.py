@@ -12,10 +12,19 @@ import argparse
 
 
 '''
+Linux:
+=====
 $ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src
 $ pwd
  /home/alan/workspace-python/RTL-SDR/rf-surveillance/src
-$ python3 rfnode setting.json -vvv -ld /home/alan/tmp
+$ python rfnode setting.json -vvv -ld /home/alan/tmp
+
+Windows:
+========
+set PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src
+echo %PYTHONPATH%
+python rfnode setting.json -vvv -ld /home/alan/tmp
+Note: Check the devicemanager from the control panel for the port name
 '''
 def main()-> None:
 
@@ -49,13 +58,17 @@ def main()-> None:
 
     for i in (range(len(serial_numbers))):
         print(f'device index {i}')
+        # see https://pyrtlsdr.readthedocs.io/en/latest/rtlsdr.html
         sdr = RtlSdr(device_index=i)
-        scanner = Scanner(frequencies=frequencies[i],sample_rate=Setting.sample_rate,
-                          sample_size=Setting.sample_size, power_threshold=Setting.power_threshold,
+        print(f'Sample rate in millions(Msps) {Setting.sample_rate/1e6}')
+        sdr.set_sample_rate(Setting.sample_rate) # default sample_rate value used on initialization: 1.024e6 (1024 Msps)
+        print(f'IQ sample size(ex: 0.7 -1.5j) {Setting.sample_size}\n\n')
+        scanner = Scanner(frequencies=frequencies[i],sample_size=Setting.sample_size, 
+                          power_threshold=Setting.power_threshold,
                           sdr=sdr)
         scanners.append(scanner)
 
-    print(f'Started number of threads: {len(scanners)}')
+    print(f'Number of threads: {len(scanners)}\n\n')
     for scanner in scanners:
         scanner.start()
 

@@ -26,33 +26,33 @@ def display_menu():
 
 class Scanner(Thread):
 
-    def __init__(self, frequencies:list[np.int64], sample_rate:int, sample_size:int,
+    def __init__(self, frequencies:list[np.int64], sample_size:int,
                    power_threshold: float, sdr: RtlSdr):
         Thread.__init__(self)
         self.frequencies = frequencies
-        self.sample_rate = sample_rate
         self.sample_size = sample_size
         self.power_threshold = power_threshold
         self.sdr = sdr
-        self.gain = 'auto'
+       
         self.logger = logging.getLogger("Scanner")
-
+       
 
     def run(self):
         self.logger.info(f'{self.name}: Starting scanner')
 
         stop_freq = self.frequencies[   len(self.frequencies)-1]
         start_freq = self.frequencies[0]
-        print(f'start freq {start_freq/1e6}')
-        print(f'stop_freq {stop_freq/1e6}')
+        print(f'start freq(MHz) {start_freq/1e6} -->{self.getName()}')
+        print(f'stop_freq(MHz) {stop_freq/1e6} -->{self.getName()}')
         self.logger.info(f'{self.name:} Scanning from {self.frequencies[0]/1e6} MHz to {stop_freq/1e6} MHz...')
         counter = 0
         print("\n")
         while True:
             counter+=1
-            print(f"SCANNING-->iteration:{counter}")
-            self.do_run()
+            print(f'SCANNING-->iteration:{counter} -->{self.getName()}')
             print("\n\n")
+            self.do_run()
+            
 
         self.sdr.close()
 

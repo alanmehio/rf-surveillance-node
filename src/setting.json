@@ -1,9 +1,9 @@
 {
   "freq_start":"100.5",
-  "freq_end":"309.5",
+  "freq_end":"109.5",
   "freq_step":"100",
   "sample_size":"1024",
-  "sample_rate":"3.2",
+  "sample_rate":"1.024",
   "power_threshold":"20.00",
   "rf_sender_port":"ttyACM0",
   "rf_sender_port_windows":"COM3",

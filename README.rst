@@ -19,9 +19,11 @@ can have unlimited antenna scanners; each antenna is given a range of frequency 
 the power which exceed the given threshold which is defined in the setting file
 The antenna sends the signal data into a transmitter device found in the node.
 The data sent is: central frequency in MHz , the power in dBm, IQ sample (imaginary number) where the sample size is configured to 1024 numbers.
+The sample size can be in hundred thousands. The sample rate is 1.24 millions samples per second; it can be configured to tens of millions per second.
 The node works in a plug and play which means high quality SDR devices (RTL-SDR, USRP, BladeRF, HackRF etc..) can be attached to sample on much higher rate.
 
 |rf_node|
+|rf_node_console|
 
 
 RF-Central
@@ -137,6 +139,9 @@ License
 
 .. |rf_node| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-node.png
                 :alt: RF Surveillance Node
+
+.. |rf_node_console| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/screen/rf-node-console.gif
+                :alt: RF Surveillance Node Console Display for two RTL-SDR devices 
 
 .. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-central.jpeg
                 :alt: RF Surveillance Central(Server)

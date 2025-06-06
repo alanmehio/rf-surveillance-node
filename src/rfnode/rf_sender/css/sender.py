@@ -21,8 +21,6 @@ class Sender():
     # 4bytes*1  = 4 bytes
     def generate_header(self,data:bytes)->bytes:
         checksum:int = self.checksum_calculator(data)
-        print(f'Checksum before  {checksum}')
-        #print(f'data length before  {data_length}')
         return struct.pack("!I",checksum)
 
     def build_packets(self,payload:str)->list[bytes]:
@@ -30,16 +28,13 @@ class Sender():
         header:bytes = self.generate_header(data)
         # Split data into chunks
         chunks = [data[i:i+Sender.MAX_PAYLOAD-2] for i in range(0, len(data), Sender.MAX_PAYLOAD-2)]
-        print(f'{len(chunks)}')
         indexed_chunks:list[bytes] = []
         for i, chunk in enumerate(chunks):
             packet = bytes([i]) + chunk  # Add packet index
             indexed_chunks.append(packet)
             #index:int = packet[0]
-            #print(index)
 
         indexed_chunks.insert(0, header) # header at start of the list
-        #print(len(indexed_chunks))
         return indexed_chunks
 
     def send(self, payload:str)->None:

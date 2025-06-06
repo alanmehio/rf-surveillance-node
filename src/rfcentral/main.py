@@ -1,9 +1,18 @@
 
 '''
+Linux:
+=====
 $ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src
 $ pwd
  /home/alan/workspace-python/RTL-SDR/rf-surveillance/src
-$ python rfcentral -f 50 -e 65.55 -p ttyACM0
+$ python rfcentral -p 65.55 -d ttyACM0
+
+Windows:
+=======
+set PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src
+echo %PYTHONPATH%
+python rfcentral  -p 65.55 -d COM4
+Note: Check the devicemanager from control panel for the port name
 '''
 import platform
 from argparse import ArgumentParser, Namespace
@@ -21,27 +30,17 @@ def main()-> None:
 
     Command-line arguments
     ----------------------
-    -f : float
-       frequency of pulling in milli seconds (ms)
-       default to 50 ms if not given.
     -p : float
         energy warning level; default to 50 dBm
     -d : str
         device name default to 'ttyACM0'
 
     Examples:
-        >>> rfcentral -f 50 -p 65.55 -d ttyACM0
+        >>> rfcentral -p 65.55 -d ttyACM0
     """
-     parser = ArgumentParser(prog="rfcentral", usage="rfcentral -f 50 -p 65.55 -d ttyACM0",description="RF Central Command Line Interface")
+     parser = ArgumentParser(prog="rfcentral", usage="rfcentral -p 65.55 -d ttyACM0",description="RF Central Command Line Interface")
 
-     parser.add_argument(
-        '-f',
-        help= 'pulling frequency for the RF receiver',
-        type= float,
-        default=50.00,
-        nargs='?',
-        metavar='frequency'
-     )
+
      parser.add_argument(
         '-p',
         help='frequency engergy power level; if exceeded will give beep as warning',
@@ -61,7 +60,6 @@ def main()-> None:
      )
 
      args : Namespace = parser.parse_args()
-     frequency:float = args.f
      power:float = args.p
      device:str = args.d
 

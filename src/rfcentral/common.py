@@ -10,5 +10,6 @@ class GeneralUtil():
         '''
         try:
             values:list[str] = data.split("|")
+            return values
         except IndexError as ex:
             return None # FIXME needs to log

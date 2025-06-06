@@ -62,8 +62,10 @@ class Receiver():
          data_bytes = self.assemble_into_bytes(assembled_packets)
          correct_checksum = self.is_correct_checksum(sum, data_bytes)
          if correct_checksum:
-             print(f'Is checksum correct {correct_checksum}')
-             return data_bytes.decode()  # FIXME contains the NEW_LINE ( char terminator)
+             row_data:str = data_bytes.decode()
+             # remove the the NEW_LINE ( char terminator)
+             row_data = row_data[:len(row_data)-1]
+             return row_data
          else:
              print('\a')
              print('\a')
@@ -89,15 +91,12 @@ class Receiver():
                           packets = []
                           if result :
                               lst =GeneralUtil.get_freq_power(result)
-                              if lst:
+                              if lst :
                                    now = datetime.now()
                                    date_time = now.strftime("%m-%d-%Y %H:%M:%S")
                                    self.console.display(lst[0],lst[1],date_time=date_time)
                                    model = FrequencyPowerTime(float(lst[0]), float(lst[1]), date_time=date_time)
                                    DataBroker.q.put(model)
-
-
-            #time.sleep(0.0001)
 
 
 def main()->None:

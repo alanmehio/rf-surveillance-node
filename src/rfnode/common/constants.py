@@ -34,5 +34,5 @@ NFFT = [16,
 
 
 if __name__ == '__main__':
-    print 'Please run ?????.py'
+    print('Please run ?????.py')
     exit(1)

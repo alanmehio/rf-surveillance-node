@@ -98,6 +98,9 @@ class SearchGroupBox(QGroupBox):
         else:
             self.error_message.setText("")
             result = DataBaseManager.search_power_frequency(min_power, max_power, min_frequency, max_frequency)
-            show_query_results(result)
+            if result:
+                show_query_results(result)
+            else:
+                self.error_message.setText("No results !")
         
        

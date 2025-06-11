@@ -60,6 +60,9 @@ class SearchGroupBox(QGroupBox):
         self.min_frequency_label = QLabel("Min:",alignment=(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignCenter))
         self.max_frequency_label = QLabel("Max:",alignment=(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignCenter))
 
+        self.error_message = QLabel("")
+        self.error_message.setStyleSheet("QLabel { color : red}")
+
         self.button = QPushButton("Search")
         
         layout.addWidget(self.power_label,0,0)
@@ -77,15 +80,24 @@ class SearchGroupBox(QGroupBox):
         layout.addWidget(self.max_frequency_spin,1,4)
 
 
+        layout.addWidget(self.error_message)
         layout.addWidget(self.button,2,0)
 
 
         self.button.clicked.connect(self.search_database)
         
-    def search_database(self):
+    def search_database(self): 
         min_power = self.min_power_spin.value()
         max_power = self.max_power_spin.value()
         min_frequency = self.min_frequency_spin.value()
         max_frequency = self.max_frequency_spin.value()
-        result = DataBaseManager.search_power_frequency(min_power, max_power, min_frequency, max_frequency)
-        show_query_results(result)
+
+        if min_frequency > max_frequency or min_power > max_power:
+            self.error_message.setText("min values can't be larger than max values !")
+
+        else:
+            self.error_message.setText("")
+            result = DataBaseManager.search_power_frequency(min_power, max_power, min_frequency, max_frequency)
+            show_query_results(result)
+        
+       

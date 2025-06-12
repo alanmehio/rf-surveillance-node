@@ -13,8 +13,6 @@ def main()-> None:
    app = QtWidgets.QApplication()
    
    widget = MainWindow()
-   widget.resize(800,600)
-   widget.setWindowTitle("rfsink")
    widget.show()
 
    sys.exit(app.exec()) 

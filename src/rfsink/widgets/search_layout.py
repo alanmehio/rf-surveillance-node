@@ -2,20 +2,21 @@ from PySide6.QtWidgets import QGroupBox, QGridLayout, QLabel, QPushButton, QDoub
 from PySide6.QtCore import QLocale, Qt
 from rfsink.database.database_query import DataBaseManager
 from rfsink.windows.query_result_window import show_query_results
+from rfsink.signal_manager.data_signal_manager import signal_manager
 
 class SearchGroupBox(QGroupBox):
     
-    def __init__(self, title="Group Box", parent=None):
+    def __init__(self, parent=None):
 
         self.min_power = 20.0
         self.max_power = 50.55
         self.min_frequency = 103.7
         self.max_frequency = 108.7
 
-        super().__init__(title, parent)
-        self._setup_ui()
+        super().__init__(parent)
+        self.setup_ui()
         
-    def _setup_ui(self):
+    def setup_ui(self):
 
         layout = QGridLayout()
         self.setLayout(layout)
@@ -99,6 +100,7 @@ class SearchGroupBox(QGroupBox):
             self.error_message.setText("")
             result = DataBaseManager.search_power_frequency(min_power, max_power, min_frequency, max_frequency)
             if result:
+                signal_manager.data_signal.emit(result)
                 show_query_results(result)
             else:
                 self.error_message.setText("No results !")

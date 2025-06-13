@@ -114,7 +114,6 @@ class DataGraph3D(FigureCanvas):
             self.ax.set_zlabel("Power")
 
             self.ax.yaxis.set_major_formatter(mdates.DateFormatter('%d-%m %H:%M'))
-            self.ax.yaxis.set_major_locator(mdates.AutoDateLocator())
 
             self.ax.set_zlim(self.min_power, self.max_power)
 

@@ -14,7 +14,7 @@ class DataGraph3D(FigureCanvas):
         super().__init__(figure)
 
         self.min_power = 20.0
-        self.max_power = 50.55
+        self.max_power = 60.0
 
         self.type = "scatter"
 
@@ -95,7 +95,7 @@ class DataGraph3D(FigureCanvas):
                 points=(freq, time),
                 values=power,
                 xi=(FREQ, TIME),
-                method='linear'
+                method='nearest'
             )
 
             # Mask NaNs for better plotting
@@ -114,7 +114,6 @@ class DataGraph3D(FigureCanvas):
             self.ax.set_ylabel("Time")
             self.ax.set_zlabel("Power")
 
-            self.ax.set_ylim(time.min(), time.max())
             self.ax.yaxis.set_major_formatter(mdates.DateFormatter('%d-%m %H:%M'))
             self.ax.yaxis.set_major_locator(mdates.AutoDateLocator())
 
@@ -131,6 +130,8 @@ class DataGraph3D(FigureCanvas):
             self.ax.set_title("Power Over Time")
             self.ax.set_xlabel("Time")
             self.ax.set_ylabel("Power")
+
+            self.ax.set_ylim(self.min_power, self.max_power)
 
             self.ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
             self.ax.legend()

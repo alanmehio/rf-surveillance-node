@@ -9,9 +9,9 @@ class SearchGroupBox(QGroupBox):
     def __init__(self, parent=None):
 
         self.min_power = 20.0
-        self.max_power = 50.55
-        self.min_frequency = 103.7
-        self.max_frequency = 108.7
+        self.max_power = 60.0
+        self.min_frequency = 103.0
+        self.max_frequency = 109.0
 
         super().__init__(parent)
         self.setup_ui()

@@ -12,8 +12,7 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.result_window= "in_window"
-
-        self.create_menu()
+        
         self.setup_ui()
         
    def setup_ui(self):
@@ -47,8 +46,11 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("RF Sink Viewer")
         self.resize(800, 600)
         
+        self.create_menu()
+        
 
    def create_menu(self):
+       global menubar
        menubar = self.menuBar()
    
        file_menu = menubar.addMenu("File")
@@ -123,9 +125,11 @@ class MainWindow(QMainWindow):
    def set_in_window(self):
       self.result_window = "in_window"
       table_type_manager.data_signal.emit(False)
+      menubar.clear()
       self.setup_ui()
       
    def set_new_window(self):
       self.result_window = "new_window"
       table_type_manager.data_signal.emit(True)
+      menubar.clear()
       self.setup_ui()

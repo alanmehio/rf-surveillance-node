@@ -25,7 +25,6 @@ class DataGraph3D(FigureCanvas):
 
 
         self.ax = self.figure.add_subplot(projection='3d')
-
         self.ax.set_title("Data Graph")
         
         signal_manager.data_signal.connect(self.receive_data)
@@ -57,9 +56,13 @@ class DataGraph3D(FigureCanvas):
         if not (self.freq and self.pow and self.time):
             print("No data to plot.")
             return
-        self.ax.clear()
+
         
         if self.type == "scatter":
+            self.figure.clear()
+            self.ax = self.figure.add_subplot(projection='3d')
+
+            self.ax.set_title("Data Graph")
 
             self.ax.set_title("Data Graph")
             self.ax.set_xlabel("Frequency")
@@ -71,7 +74,11 @@ class DataGraph3D(FigureCanvas):
             self.draw()
 
         elif self.type == "meshgrid":
-            self.ax.clear()
+            self.figure.clear()
+
+            self.ax = self.figure.add_subplot(projection='3d')
+
+            self.ax.set_title("Data Graph")
 
             # Prepare data as numpy arrays
             freq = np.array(self.freq)
@@ -79,8 +86,8 @@ class DataGraph3D(FigureCanvas):
             power = np.array(self.pow)
 
             # Build a grid
-            freq_lin = np.linspace(freq.min(), freq.max(), 30)
-            time_lin = np.linspace(time.min(), time.max(), 30)
+            freq_lin = np.linspace(freq.min(), freq.max(), 100)
+            time_lin = np.linspace(time.min(), time.max(), 100)
             FREQ, TIME = np.meshgrid(freq_lin, time_lin)
 
             # Interpolate power data onto grid
@@ -114,4 +121,21 @@ class DataGraph3D(FigureCanvas):
             self.ax.set_zlim(self.min_power, self.max_power)
 
             self.draw()
+
+        elif self.type == "line":
+            self.figure.clear()
+            self.ax = self.figure.add_subplot(111)
+
+            self.ax.plot(self.time, self.pow, label="Power")
+
+            self.ax.set_title("Power Over Time")
+            self.ax.set_xlabel("Time")
+            self.ax.set_ylabel("Power")
+
+            self.ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
+            self.ax.legend()
+            self.figure.autofmt_xdate()
+
+            self.draw()
+
 

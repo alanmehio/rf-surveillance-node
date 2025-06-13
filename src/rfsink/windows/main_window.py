@@ -66,7 +66,7 @@ class MainWindow(QMainWindow):
 
        # parrent menu
        tool_menu = menubar.addMenu("Tools")
-       select_graph_menu = tool_menu.addMenu("3D Graph")
+       select_graph_menu = tool_menu.addMenu("Graph")
 
        graph_group = QActionGroup(self)
        graph_group.setExclusive(True)
@@ -78,12 +78,16 @@ class MainWindow(QMainWindow):
        graph_option_b = QAction("3D Mesh Grid", self, checkable=True)
        graph_option_b.triggered.connect(self.set_meshgrid)
 
+       graph_option_c = QAction("2D Line", self, checkable=True)
+       graph_option_c.triggered.connect(self.set_line)
+
        graph_group.addAction(graph_option_a)
        graph_group.addAction(graph_option_b)
-
+       graph_group.addAction(graph_option_c)
 
        select_graph_menu.addAction(graph_option_a)
        select_graph_menu.addAction(graph_option_b)
+       select_graph_menu.addAction(graph_option_c)
        
        select_table_menu = tool_menu.addMenu("Table view")
 
@@ -112,6 +116,9 @@ class MainWindow(QMainWindow):
       
    def set_meshgrid(self):
       graph_type_manager.data_signal.emit("meshgrid")
+
+   def set_line(self):
+      graph_type_manager.data_signal.emit("line")
 
    def set_in_window(self):
       self.result_window = "in_window"

@@ -16,3 +16,11 @@ class GraphTypeSignalManager(QObject):
         super().__init__()
 
 graph_type_manager = GraphTypeSignalManager()
+
+class TableTypeSignalManager(QObject):
+    data_signal = Signal(bool)
+
+    def __init__(self)->None:
+        super().__init__()
+
+table_type_manager = TableTypeSignalManager()

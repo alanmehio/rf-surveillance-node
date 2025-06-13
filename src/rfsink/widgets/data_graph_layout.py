@@ -49,6 +49,7 @@ class DataGraph3D(FigureCanvas):
 
     def set_type(self, type):
         self.type = type
+        self.draw_graph()
 
     
     def draw_graph(self):

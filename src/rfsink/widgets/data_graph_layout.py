@@ -54,7 +54,6 @@ class DataGraph3D(FigureCanvas):
     def draw_graph(self):
 
         if not (self.freq and self.pow and self.time):
-            print("No data to plot.")
             return
 
         

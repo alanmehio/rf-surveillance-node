@@ -32,4 +32,13 @@ This folder contains:
 In the main.py, I added an arg parser for the "--version" . This way rfsink --version will give the user the current version of our application.
 And called the main_window class to create our main gui.
 
+## how execute the RF-Sink Desktop application
+* Create and activate a virtual environment 
+* Go to the root folder of the project (rf-surveillance)
+
+```
+$ pip install -e .
+$ rfsink
+```
+
 

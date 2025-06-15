@@ -60,6 +60,9 @@ dependencies = [
   "pyrtlsdr>=0.3.0",
   "numpy>=2.2.6",
   "pyserial>=3.5",
+  "pyside6>=6.9.0",
+  "matplotlib>=3.10.0",
+  "scipy>=1.15.0"
 ]
 
 ## optional dependency for test or other purpose 

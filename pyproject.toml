@@ -62,7 +62,8 @@ dependencies = [
   "pyserial>=3.5",
   "pyside6>=6.9.0",
   "matplotlib>=3.10.0",
-  "scipy>=1.15.0"
+  "scipy>=1.15.0",
+  "flask"
 ]
 
 ## optional dependency for test or other purpose 
@@ -70,6 +71,8 @@ dependencies = [
 ## $ pip install -e .  rf-surveillance[test]
 ## or 
 ## $ pip install -e . [test]
+## or 
+## pip install '.[test]' 
 [project.optional-dependencies]
 test = [
   "pytest>=8.0.0",

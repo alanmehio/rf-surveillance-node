@@ -5,7 +5,8 @@ import matplotlib.dates as mdates
 from datetime import datetime
 import numpy as np
 from scipy.interpolate import griddata
-
+from matplotlib import cm
+from matplotlib.colors import Normalize
 
 
 class DataGraph3D(FigureCanvas):
@@ -79,17 +80,17 @@ class DataGraph3D(FigureCanvas):
 
             self.ax.set_title("Data Graph")
 
-            # Prepare data as numpy arrays
+            # Preparing data as numpy arrays
             freq = np.array(self.freq)
             time = np.array(self.time)
             power = np.array(self.pow)
 
-            # Build a grid
+            # Building a grid
             freq_lin = np.linspace(freq.min(), freq.max(), 100)
             time_lin = np.linspace(time.min(), time.max(), 100)
             FREQ, TIME = np.meshgrid(freq_lin, time_lin)
 
-            # Interpolate power data onto grid
+            # Interpolating power data onto grid
             POWER = griddata(
                 points=(freq, time),
                 values=power,
@@ -97,7 +98,6 @@ class DataGraph3D(FigureCanvas):
                 method='nearest'
             )
 
-            # Mask NaNs for better plotting
             POWER = np.nan_to_num(POWER, nan=np.nanmin(power))
 
 
@@ -123,16 +123,31 @@ class DataGraph3D(FigureCanvas):
             self.figure.clear()
             self.ax = self.figure.add_subplot(111)
 
-            self.ax.plot(self.time, self.pow, label="Power")
+            # Normalizing frequency values for colormap
+            norm = Normalize(vmin=min(self.freq), vmax=max(self.freq))
+            cmap = cm.get_cmap('viridis')
 
-            self.ax.set_title("Power Over Time")
-            self.ax.set_xlabel("Time")
-            self.ax.set_ylabel("Power")
+            # Plotting each segment with color based on frequency
+            for i in range(len(self.pow) - 1):
+                x_vals = [self.time[i], self.time[i+1]]
+                y_vals = [self.pow[i], self.pow[i+1]]
+                freq_avg = (self.freq[i] + self.freq[i+1]) / 2
+                color = cmap(norm(freq_avg))
 
-            self.ax.set_ylim(self.min_power, self.max_power)
+                self.ax.plot(x_vals, y_vals, color=color, linewidth=2)
 
-            self.ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
-            self.ax.legend()
+            # Formatting time axis
+            self.ax.set_xlabel('Time')
+            self.ax.set_ylabel('Power')
+            self.ax.set_title('Power vs Time (Colored by Frequency)')
+
+            # Adding colorbar
+            sm = cm.ScalarMappable(norm=norm, cmap=cmap)
+            sm.set_array([])  # Required to register mappable
+            cbar = self.figure.colorbar(sm, ax=self.ax)
+            cbar.set_label("Frequency")
+
+            self.ax.xaxis.set_major_formatter(mdates.DateFormatter('%d-%m %H:%M'))
             self.figure.autofmt_xdate()
 
             self.draw()

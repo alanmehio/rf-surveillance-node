@@ -73,7 +73,7 @@ def main()-> None:
      data_broker = DataBroker()
      data_broker.start()
      receiver = Receiver(out, port=port)
-     receiver.receive()
+     receiver.start() # execute in a separate thread
 
 
 # this is important so that it does not run from pytest

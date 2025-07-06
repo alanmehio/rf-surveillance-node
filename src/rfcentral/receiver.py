@@ -1,3 +1,4 @@
+from threading import Thread
 from serial import Serial
 import struct
 import zlib
@@ -6,13 +7,15 @@ from .displayer import ConsoleOutput
 from .common import GeneralUtil
 from .model import FrequencyPowerTime
 from .broker import DataBroker
-class Receiver():
+class Receiver(Thread):
     NEW_LINE =  b'\n'
 
     def __init__(self, console:ConsoleOutput, port:str) -> None:
+        Thread.__init__(self)
         self.console = console
         self.port = port
         self.ser = Serial(port=port, baudrate=115200)
+
 
 
     def checksum_calculator(self,data:bytes)->int:
@@ -98,12 +101,14 @@ class Receiver():
                                    model = FrequencyPowerTime(float(lst[0]), float(lst[1]), date_time=date_time)
                                    DataBroker.q.put(model)
 
+    def run(self)->None:
+        self.receive()
+
 
 def main()->None:
     out = ConsoleOutput(60.666)
     receiver = Receiver(out, "COM4")
-    receiver.receive()
-
+    receiver.start()
 
 if __name__ == '__main__':
     main()

@@ -1,7 +1,7 @@
 # Security Policy
 
-RF surviellance application security policy is based on updating the third parties depedencies 
-tested to be seure free for any malicious code, also known as malware code.
+RF surviellance application security policy is based on updating the third parties dependencies
+tested to be secure free for any malicious code, also known as malware code.
 
 ## Supported Versions
 

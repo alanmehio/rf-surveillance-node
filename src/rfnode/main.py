@@ -12,6 +12,15 @@ import argparse
 
 
 '''
+A- Make the project in edit mode
+$ pwd
+/home/alan/workspace-python/RTL-SDR/rf-surveillance
+$ pip install -e .
+$ rfnode setting.json -vvv -ld /home/alan/tmp
+
+//////////////////////////////////////////
+
+B- Using PYTHONPATH (Not recommended)
 Linux:
 =====
 $ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src
@@ -63,7 +72,7 @@ def main()-> None:
         print(f'Sample rate in millions(Msps) {Setting.sample_rate/1e6}')
         sdr.set_sample_rate(Setting.sample_rate) # default sample_rate value used on initialization: 1.024e6 (1024 Msps)
         print(f'IQ sample size(ex: 0.7 -1.5j) {Setting.sample_size}\n\n')
-        scanner = Scanner(frequencies=frequencies[i],sample_size=Setting.sample_size, 
+        scanner = Scanner(frequencies=frequencies[i],sample_size=Setting.sample_size,
                           power_threshold=Setting.power_threshold,
                           sdr=sdr)
         scanners.append(scanner)

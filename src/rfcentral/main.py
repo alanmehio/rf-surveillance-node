@@ -1,5 +1,14 @@
 
 '''
+A- Make the project in edit mode
+$ pwd
+/home/alan/workspace-python/RTL-SDR/rf-surveillance
+$ pip install -e .
+$ rfcentral -p 65.55 -d ttyACM0
+
+//////////////////////////////////////////
+
+B- Using PYTHONPATH (Not recommended)
 Linux:
 =====
 $ export PYTHONPATH=/home/alan/workspace-python/RTL-SDR/rf-surveillance/src

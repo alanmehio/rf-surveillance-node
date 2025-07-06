@@ -40,13 +40,6 @@ Extracting useful data from the sample signal will be implemented in version 3.
 |rf_central_console|
 
 
-RF Sink
-=======
-This application is a GUI application (Desktop) which query the RF central(sever) to extract the
-already calculated meta data with different search criteria; the search result reveals signal meta data
-such as modulation, distance, direction, noise level, phase shift, etc..
-|rf_sink2|
-|rf_sink3|
 
 Change Log
 ==========
@@ -144,17 +137,11 @@ License
                 :alt: RF Surveillance Node
 
 .. |rf_node_console| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/screen/rf-node-console.gif
-                :alt: RF Surveillance Node Console Display for two RTL-SDR devices 
+                :alt: RF Surveillance Node Console Display for two RTL-SDR devices
 
 .. |rf_central| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-central.jpeg
                 :alt: RF Surveillance Central(Server)
 .. |rf_central_console| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/screen/rf-central-console.gif
                 :alt: RF Surveillance Central(Server) console output
-
-.. |rf_sink2| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-sink2.jpeg
-                :alt: RF Surveillance Sink(Client)
-
-.. |rf_sink3| image:: https://github.com/alanmehio/rf-surveillance/blob/main/media/rf-sink3.jpeg
-                :alt: RF Surveillance Sink(Client)
 
 

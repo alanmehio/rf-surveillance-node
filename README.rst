@@ -8,7 +8,8 @@ RF Surveillance Node
 | |ruff| |gh-lic| |commits_since_specific_tag_on_main|
 
 
-| Radio Frequency Surveillance Node
+Radio Frequency Surveillance Node
+---------------------------------
 | Different nodes sends signal based on pre-configured required power strength. Each node
 can have unlimited antenna scanners; each antenna is given a range of frequency slice to scan and report
 the power which exceed the given threshold. Threshold is defined in a setting file.

@@ -10,11 +10,14 @@
 *__pycache__
 
 docs/_build/
+docs/build/html
+docs/build/doctrees
 dist/
 build/
 htmlcov/
 
 .tox/
+node_modules
 
 dependency-graphs/
 test-results/
@@ -26,8 +29,16 @@ pydoer-graphs/
 # LOCK files
 *.lock
 # VSC local env
-.venv/
-# pin-deps generated file 
+venv
+# poetry pin-deps generated file 
 reqs.txt
+# poetry .readthedocs.yaml 
+req-docs.txt
 # auto-generated Sphinx api docs
 .docs
+
+# manifest file 
+MANIFEST.in
+
+req-docs.txt
+reqs.txt

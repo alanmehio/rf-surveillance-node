@@ -1,6 +1,5 @@
 # output-format: json
 # see https://prospector.landscape.io/en/master/
-# Python static analysis 
 
 strictness: high
 test-warnings: true

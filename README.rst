@@ -8,14 +8,14 @@ RF Surveillance Node
 | |ruff| |gh-lic| |commits_since_specific_tag_on_main|
 
 
-| Radio Frequency Surveillance Node. This is one of four applications
-Different nodes sends signal based on pre-configured required power strength. Each node
+| Radio Frequency Surveillance Node
+| Different nodes sends signal based on pre-configured required power strength. Each node
 can have unlimited antenna scanners; each antenna is given a range of frequency slice to scan and report
-the power which exceed the given threshold which is defined in the setting file
+the power which exceed the given threshold. Threshold is defined in a setting file.
 The antenna sends the signal data into a transmitter device found in the node.
-The data sent is: central frequency in MHz , the power in dBm, IQ sample (imaginary number) where the sample size is configured to 1024 numbers.
+The sent data consist of a central frequency in MHz , the power in dBm, IQ sample (imaginary number) where the sample size is configured.
 The sample size can be in hundred thousands. The sample rate is 1.24 millions samples per second; it can be configured to tens of millions per second.
-The node works in a plug and play which means high quality SDR devices (RTL-SDR, USRP, BladeRF, HackRF etc..) can be attached to sample on much higher rate.
+The node works in a plug and play. High quality SDR devices (RTL-SDR, USRP, BladeRF, HackRF etc..) can be attached to sample on much higher rate.
 
 |rf_node|
 |rf_node_console|

@@ -7,11 +7,9 @@ class LogManager(object):
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             cls.instance = super(LogManager,cls).__new__(cls)
-            return cls.instance
+        return cls.instance
     
-    def __init__(self):
-        pass
-
+  
     def config_logger(self, verbose, dir):
         params = {}
         levels = [logging.ERROR, logging.WARNING, logging.INFO, logging.DEBUG]
@@ -30,7 +28,7 @@ class LogManager(object):
 if __name__ == "__main__":
     manager = LogManager()
     manager.config_logger(3, "/home/alan/tmp",)
-    logger =logging.getLogger("rstsdl")
+    logger =logging.getLogger("rstsdr")
     logger.debug("This is debug")
     logger.info("This is info")
     logger.warning("This is warning")

@@ -58,14 +58,14 @@ License
 .. Build Status
 .. Github Actions: Test Workflow Status for specific branch <branch>
 
-.. |build| image:: https://img.shields.io/github/workflow/status/alanmehio/rf-surveillance-node/Test%20Python%20Package/main?label=build&logo=github-actions&logoColor=%233392FF
+.. |build| image::  https://github.com/alanmehio/rf-surveillance-node/actions/workflows/ci_cd.yaml/badge.svg
     :alt: GitHub Workflow Status (branch)
-    :target: https://github.com/alanmehio/rf-surveillance-node/actions/workflows/test.yaml?query=branch%3Amain
+    :target: https://github.com/alanmehio/rf-surveillance-node/actions
 
 
 .. Documentation
 
-.. |docs| image:: https://img.shields.io/readthedocs/rf-surveillance-node/latest?logo=readthedocs&logoColor=lightblue
+.. |docs| image:: https://img.shields.io/alanmehio/rf-surveillance-node/latest?logo=readthedocs&logoColor=lightblue
     :alt: Read the Docs (version)
     :target: https://rf-surveillance-node.readthedocs.io/en/latest/
 
@@ -121,10 +121,5 @@ License
 
 .. |rf_node_console| image:: https://github.com/alanmehio/rf-surveillance-node/blob/main/media/screen/rf-node-console.gif
                 :alt: RF Surveillance Node Console Display for two RTL-SDR devices
-
-.. |rf_central| image:: https://github.com/alanmehio/rf-surveillance-node/blob/main/media/rf-central.jpeg
-                :alt: RF Surveillance Central(Server)
-.. |rf_central_console| image:: https://github.com/alanmehio/rf-surveillance-node-node/blob/main/media/screen/rf-central-console.gif
-                :alt: RF Surveillance Central(Server) console output
 
 

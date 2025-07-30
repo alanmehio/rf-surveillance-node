@@ -3,9 +3,9 @@ import numpy as np
 from threading import Thread
 import logging
 from datetime import datetime
-from model.rf_model import HighPowerSample, HighPowerFrequency
-from device_manager import DeviceManager
-from rf_sender.css.sender import Sender
+from rfnode.model.rf_model import HighPowerSample, HighPowerFrequency
+from rfnode.device_manager import DeviceManager
+from rfnode.rf_sender.css.sender import Sender
 
 class DataBroker():
     q = queue.Queue()

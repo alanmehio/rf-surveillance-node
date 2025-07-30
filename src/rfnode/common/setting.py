@@ -41,7 +41,7 @@ if __name__ == "__main__":
     import os.path
     from pathlib import Path
     s = os.path.dirname(__file__)
-    p = Path(s).parent.parent.parent.joinpath("src")
+    p = Path(s).parents[1]
     raw_path = str(p) + os.path.sep + "setting.json"
     Setting.load_setting(raw_path)
     print(Setting.freq_start)

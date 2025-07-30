@@ -6,9 +6,9 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [project]
-name = "rfnode"
-version = "0.3.2"
-description = "Digital Magnatic Compass View"
+name = "rfnode" # package name same as project name 
+version = "1.0.0"
+description = "Radio Frequency Survelliance Node"
 authors = [
    {name="Iso"}, 
    {name="Alan"}
@@ -17,12 +17,12 @@ maintainers = [{name="Iso"}, {name="Alan"}] # must be an object
 license = "AGPL-3.0-only"
 readme = "README.rst"
 
-homepage = "https://github.com/Issamricin/dmc-view"
-repository = "https://github.com/Issamricin/dmc-view"
-documentation = "https://dmc-view.readthedocs.io/"
+homepage = "https://github.com/alanmehio/rf-surveillance-node"
+repository = "https://github.com/alanmehio/rf-surveillance-node"
+documentation = "https://rf-surveillance-node.readthedocs.io/"
 
 keywords = [
-    "digital magnatic view", "dmc",
+    "Radio Frequency", "RF"
 ]
 
 requires-python = ">=3.8"
@@ -31,7 +31,7 @@ requires-python = ">=3.8"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Manufacturing",
-    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: End Users/Server",
     "License :: OSI Approved :: GNU Affero General Public License v3",
     "Natural Language :: English",
     "Operating System :: Unix",
@@ -44,37 +44,36 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Topic :: Desktop Environment",
+    "Topic :: Server Environment",
 ]
 
 
 # PyPi url links, that appear in 'Project Links' section
-urls."Bug Tracker" = "https://github.com/Issamricin/dmc-view/issues"
-urls."CI: Github Actions" = "https://github.com/Issamricin/dmc-view/actions"
-urls.Documentation = "https://dmc-view.readthedocs.io/"
-urls."Source Code" = "https://github.com/Issamricin/dmc-view"
-urls.Changelog = "https://github.com/Issamricin/dmc-view/blob/master/CHANGELOG.rst"
-urls."Code of Conduct" = "https://github.com/Issamricin/dmc-view/blob/master/CONTRIBUTING.md"
+urls."Bug Tracker" = "https://github.com/alanmehio/rf-surveillance-node/issues"
+urls."CI: Github Actions" = "https://github.com/alanmehio/rf-surveillance-node/actions"
+urls.Documentation = "https://rf-surveillance-node.readthedocs.io/"
+urls."Source Code" = "https://github.com/alanmehio/rf-surveillance-node"
+urls.Changelog = "https://github.com/alanmehio/rf-surveillance-node/blob/master/CHANGELOG.rst"
+urls."Code of Conduct" = "https://github.com/alanmehio/rf-surveillance-node/blob/master/CONTRIBUTING.md"
 
 
 
 ### Dependency Constraints, aka Requirements ###
 # see https://python-poetry.org/docs/dependency-specification/#multiple-constraints-project
 dependencies = [
-  "pyrtlsdr (>=0.3.0); python_version >= '2' and python_version <= '3.11'",
-  "numpy (>=2.3.2); python_version >= '3.11' and python_version <= '3.14'",
-  "pyserial (>=3.5); python_version>='2' and python_version <='3.8'" # see https://github.com/matplotlib/matplotlib/blob/v3.10.1/pyproject.toml
+  "pyrtlsdr>=0.3.0",
+  "numpy (>=2.3.2); python_version >= '3.11' and python_version <= '3.14'", # see https://github.com/matplotlib/matplotlib/blob/v3.10.1/pyproject.toml
+  "pyserial>=3.5" 
 ]
 
 ## optional dependency for test or other purpose 
 ## Install in edit mode with the test dependencies 
-## $ pip install -e .  dmc-view[test]
+## $ pip install -e . rfnode[test]
 [project.optional-dependencies]
 test = [
   "pytest (>=8.4.0); python_version >='3.9' and python_version <='3.14'",
   "pytest-cov (>=6); python_version >='3.9' and python_version <='3.13'",
   "pytest-mock (>=3.14.0); python_version >='3.9' and python_version <='3.14'"
- # "pytest-qt (>=4.5.0); python_version >='3.9' and python_version <='3.13'" 
 ]
 docs =[
    "Sphinx (<=8.2.3);  python_version >='3.11' and python_version <='3.14'",

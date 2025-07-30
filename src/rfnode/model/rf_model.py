@@ -31,9 +31,10 @@
 import json
 from datetime import datetime
 import numpy as np
+from rfnode.common.util import NumpyComplexEncoder
 
 class HighPowerSample(object):
-    def __init__(self, power:float, center_frequency:int, samples:list[np.complex128]):
+    def __init__(self, power:float, center_frequency:int, samples:np.ndarray):
         '''
         power: The center frequency power which exceeds or equals the thresholder
         center_frequency: The center frequency in Hz
@@ -80,11 +81,27 @@ class HighPowerFrequency(object):
         self.frequencies = frequencies
         self.date_time = datetime.now()
 
-    def to_json(self)->str:
-        frequencies_str = json.dumps(self.frequencies.tolist())
+    def to_json(self, clazz=type[json.JSONEncoder])->str:
+        frequencies_str = json.dumps(self.frequencies, cls=clazz)
         d:dict = { "threshold_power":str(self.threshold_power),
                    "now": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                    "frequencies": frequencies_str
 
                   }
         return json.dumps(d)
+    
+
+
+
+if __name__ == '__main__':
+    lst = np.array([1.1+0.1j],dtype=np.complex128)
+    hightPowerSample = HighPowerSample(50.5, 1050000000, lst )
+    str_json = hightPowerSample.to_json(NumpyComplexEncoder) 
+    print(str_json)
+
+    highPowerFrequency  = HighPowerFrequency(20.55, [1.5,1.0])
+    str_json = highPowerFrequency.to_json(json.JSONEncoder)
+    print(str_json)
+
+
+

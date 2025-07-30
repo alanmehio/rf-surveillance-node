@@ -5,7 +5,7 @@ import sys
 current_dir = os.path.dirname(__file__)
 
 # Construct the path to the src directory
-src_path = os.path.abspath(os.path.join(current_dir, '../src/XXXX'))
+src_path = os.path.abspath(os.path.join(current_dir, '../src'))
 
 # Insert it into sys.path
 sys.path.insert(0, src_path)

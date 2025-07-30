@@ -53,4 +53,5 @@ COPY ./src .
 #EXPOSE 8000
 
 # Run the application by executing the python module (file)
+# FIXME 
 CMD ["python3", "-m", "app", "-s=Y"]

@@ -1,4 +1,4 @@
-from main import main
+from rfnode.main import main
 
 if __name__ == "__main__":
     main()

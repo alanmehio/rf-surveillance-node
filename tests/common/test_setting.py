@@ -1,8 +1,8 @@
-import pytest
 import os.path
 from pathlib import Path
 
 from rfnode.common.setting import Setting
+
 
 def test_setting():
     s = os.path.dirname(__file__)
@@ -15,9 +15,6 @@ def test_setting():
     assert Setting.sample_size == 1024
     assert Setting.sample_rate == 1024000
     assert Setting.power_threshold == 20.0
-    assert Setting.rf_sender_port == 'ttyACM0'
-    assert Setting.rf_sender_port_windows == 'COM3'
+    assert Setting.rf_sender_port == "ttyACM0"
+    assert Setting.rf_sender_port_windows == "COM3"
     assert Setting.rf_sleep_time == 0.1
-
-
-

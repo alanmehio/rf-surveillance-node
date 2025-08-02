@@ -177,6 +177,7 @@ ignore = [
     "B008",  # do not perform function calls in argument defaults
     "W191",  # indentation contains tabs
     "B904",  # Allow raising exceptions without from e, for HTTPException
+    "E902",  # with verbose on: scripts:1:1: E902 The system cannot find the file specified
 ]
 
 

@@ -1,7 +1,4 @@
-import pytest
-import datetime
 import logging
-
 
 from rfnode.common.log_manager import LogManager
 
@@ -19,4 +16,3 @@ def test_config():
     manager.config_logger(3, "./")
     logger = logging.getLogger("rstsdl")
     assert logger is not None
-

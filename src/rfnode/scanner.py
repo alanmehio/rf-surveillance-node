@@ -7,7 +7,7 @@ from rtlsdr import RtlSdr
 
 from rfnode.broker import DataBroker
 from rfnode.device_manager import DeviceManager
-from rfnode.model.rf_model import HighPowerFrequency, HighPowerSample
+from rfnode.model.model import HighPowerFrequency, HighPowerSample
 
 
 def display_menu():

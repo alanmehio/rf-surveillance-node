@@ -21,7 +21,8 @@ Digital Magnetic Compass View  documentation!
    :maxdepth: 2
    :caption: API:
 
-   contents/modules
+   api/rfnode
+  
    
 
 .. toctree::

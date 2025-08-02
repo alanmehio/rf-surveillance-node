@@ -3,7 +3,7 @@ import json
 import numpy as np
 
 from rfnode.common.util import NumpyComplexEncoder
-from rfnode.model.rf_model import HighPowerFrequency, HighPowerSample
+from rfnode.model.model import HighPowerFrequency, HighPowerSample
 
 
 def test_HighPowerSample():

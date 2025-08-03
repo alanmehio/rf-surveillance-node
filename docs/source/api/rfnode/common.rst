@@ -1,5 +1,5 @@
-Common package
---------------
+common
+------
 
 .. automodule:: rfnode.common
    :members:

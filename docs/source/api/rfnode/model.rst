@@ -1,5 +1,5 @@
-Model package
---------------
+model
+-----
 
 .. automodule:: rfnode.model
    :members:

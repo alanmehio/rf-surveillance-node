@@ -1,5 +1,5 @@
-Sender package
---------------
+sender
+------
 
 .. automodule:: rfnode.sender
    :members:

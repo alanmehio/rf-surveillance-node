@@ -1,3 +1,6 @@
+""" Device Manager works as a discovery for plug and play 
+to find the ports of the attached devices 
+"""
 import subprocess
 
 from rtlsdr import RtlSdr

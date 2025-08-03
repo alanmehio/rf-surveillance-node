@@ -1,5 +1,3 @@
-Version
--------
 .. automodule:: rfnode.version
    :members:
    :undoc-members:

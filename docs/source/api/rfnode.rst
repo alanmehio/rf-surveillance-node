@@ -9,10 +9,9 @@ API
 
 .. toctree::
    :maxdepth: 2
-   :caption: Modules:
 
    rfnode/broker
-   rfnode/device_manager
+   rfnode/devicemanager
    rfnode/main
    rfnode/scanner
    rfnode/version

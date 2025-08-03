@@ -1,5 +1,3 @@
-RF Sender 
----------
 .. automodule:: rfnode.sender.sender
    :members:
    :undoc-members:

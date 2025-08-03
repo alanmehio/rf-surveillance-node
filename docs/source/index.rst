@@ -1,14 +1,17 @@
-Digital Magnetic Compass View  documentation!
-=============================================
+RF Surveillance Node
+====================
 
-| Welcome to the documentation for DMC View!
-| DMC View is a Python-based desktop application designed to receive input from a compatible device and present the data through an intuitive and user-friendly interface.
+COMMUNITY VERSION
+-----------------
 
-| It simplifies the process of reading and visualizing sensor data, making it easier to interpret and understand complex information in real time.
+| Welcome to the RF Surveillance Node one of four inter-related application suite 
+| RF Node is about scanning existing range of radio frequency and sending the data to the RF Central. RF Node works in a plug and play which means unlimited 
+ devices can be connected such as RTL-SDR or other  radio frequency device reader 
+ | High quality SDR devices (RTL-SDR, USRP, BladeRF, HackRF etc..) can be attached to read QAM data at a much higher pre-configured rate. Sample size can be changed also
+   from a setting file
 
-| The application is plug-and-play, requiring minimal setup—just connect your device and start visualizing immediately.
-
-
+.. tutorial: https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
+.. extension autodoc: https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html 
 
 .. toctree::
    :maxdepth: 2

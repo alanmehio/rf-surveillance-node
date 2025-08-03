@@ -8,7 +8,7 @@ from rfnode.broker import DataBroker
 from rfnode.common.log_manager import LogManager
 from rfnode.common.setting import Setting
 from rfnode.common.util import Util
-from rfnode.device_manager import DeviceManager
+from rfnode.devicemanager import DeviceManager
 from rfnode.scanner import Scanner
 from rfnode.sender.sender import Sender
 

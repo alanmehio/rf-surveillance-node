@@ -1,4 +1,4 @@
-Scanner
+scanner
 -------
 .. automodule:: rfnode.scanner
    :members:

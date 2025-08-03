@@ -1,5 +1,3 @@
-Broker
-------
 .. automodule:: rfnode.broker
    :members:
    :undoc-members:

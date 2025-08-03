@@ -6,7 +6,7 @@ import numpy as np
 from rtlsdr import RtlSdr
 
 from rfnode.broker import DataBroker
-from rfnode.device_manager import DeviceManager
+from rfnode.devicemanager import DeviceManager
 from rfnode.model.model import HighPowerFrequency, HighPowerSample
 
 

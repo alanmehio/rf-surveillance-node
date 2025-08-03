@@ -16,7 +16,6 @@ API
    rfnode/main
    rfnode/scanner
    rfnode/version
-   rfnode/example_google
    rfnode/common
    rfnode/sender
    rfnode/model

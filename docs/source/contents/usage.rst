@@ -18,10 +18,10 @@ Assuming you have 'activated' a `python virtual environment`:
 
 
 ---------------
-Simple Use Case
+Simple Use Case 
 ---------------
 
-| Common Use Case for the rfnode 
+| Plugin in RTLSDR from  `Nooelec <https://www.nooelec.com/store/sdr/sdr-receivers/nesdr-smart-sdr.html?srsltid=AfmBOoqFB5e2jf1fsd1I9xCGV9Pz6WiBdZD2RNyXnFQp5zjB3nGYRtPX>`__ 
 
 .. code-block:: shell
 
@@ -30,7 +30,7 @@ Simple Use Case
 | **vvv**: extra verbose 
 | **ld**: log file directory location
 |
-| Common Use Case for the dmcview in simulation mode
+
 
 
 --------------

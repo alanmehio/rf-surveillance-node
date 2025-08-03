@@ -65,7 +65,7 @@ License
 
 .. Documentation
 
-.. |docs| image::  https://img.shields.io/alanmehio/rf-surveillance-node/latest?logo=readthedocs&logoColor=lightblue
+.. |docs| image::  https://img.shields.io/readthedocs/rf-surveillance-node/latest?logo=readthedocs&logoColor=lightblue
     :alt: Read the Docs (version)
     :target: https://rf-surveillance-node.readthedocs.io/en/latest/
 

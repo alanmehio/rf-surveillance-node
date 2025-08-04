@@ -69,28 +69,30 @@ License
     :alt: Read the Docs (version)
     :target: https://rf-surveillance-node.readthedocs.io/en/latest/
 
+.. PyLint
+
 .. |pylint| image:: https://img.shields.io/badge/linting-pylint-yellowgreen
     :target: https://github.com/pylint-dev/pylint
 
 .. PyPI
 
-.. |release_version| image:: https://img.shields.io/pypi/v/rf-surveillance-node
+.. |release_version| image:: https://img.shields.io/pypi/v/rfnode
     :alt: Production Version
-    :target: https://pypi.org/project/rf-surveillance-node/
+    :target: https://pypi.org/project/rfnode/
 
-.. |wheel| image:: https://img.shields.io/pypi/wheel/rf-surveillance-node?color=green&label=wheel
+.. |wheel| image:: https://img.shields.io/pypi/wheel/rfnode?color=green&label=wheel
     :alt: PyPI - Wheel
-    :target: https://pypi.org/project/rf-surveillance-node
+    :target: https://pypi.org/project/rfnode
 
-.. |supported_versions| image:: https://img.shields.io/pypi/pyversions/rf-surveillance-node?color=blue&label=python&logo=python&logoColor=%23ccccff
+.. |supported_versions| image:: https://img.shields.io/pypi/pyversions/rfnode?color=blue&label=python&logo=python&logoColor=%23ccccff
     :alt: Supported Python versions
-    :target: https://pypi.org/project/rf-surveillance-node
+    :target: https://pypi.org/project/rfnode
 
 .. Github Releases & Tags
 
-.. |commits_since_specific_tag_on_main| image:: https://img.shields.io/github/commits-since/alanmehio/rf-surveillance-node/v0.0.1/main?color=blue&logo=github
+.. |commits_since_specific_tag_on_main| image:: https://img.shields.io/github/commits-since/alanmehio/rf-surveillance-node/1.0.0/main?color=blue&logo=github
     :alt: GitHub commits since tagged version (branch)
-    :target: https://github.com/alanmehio/rf-surveillance-node/compare/v0.0.1..main
+    :target: https://github.com/alanmehio/rf-surveillance-node/compare/1.0.0..main
 
 .. |commits_since_latest_github_release| image:: https://img.shields.io/github/commits-since/alanmehio/rf-surveillance-node/latest?color=blue&logo=semver&sort=semver
     :alt: GitHub commits since latest release (by SemVer)

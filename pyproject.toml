@@ -53,7 +53,6 @@ urls."CI: Github Actions" = "https://github.com/alanmehio/rf-surveillance-node/a
 urls.Documentation = "https://rf-surveillance-node.readthedocs.io/"
 urls."Source Code" = "https://github.com/alanmehio/rf-surveillance-node"
 urls.Changelog = "https://github.com/alanmehio/rf-surveillance-node/blob/master/CHANGELOG.rst"
-urls."Code of Conduct" = "https://github.com/alanmehio/rf-surveillance-node/blob/master/CONTRIBUTING.md"
 
 
 

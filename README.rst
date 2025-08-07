@@ -118,10 +118,10 @@ License
 .. Local Image as link
 
 
-.. |rf_node| image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/blob/main/media/rf-node.png
+.. |rf_node| image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/main/media/rf-node.png
     :alt: RF Surveillance Node
 
-.. |rf_node_console| image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/blob/main/media/screen/rf-node-console.gif
+.. |rf_node_console| image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/main/media/screen/rf-node-console.gif
     :alt: RF Surveillance Node Console Display for two RTL-SDR devices
 
 

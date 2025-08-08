@@ -19,6 +19,9 @@ The sample size can be in hundred thousands. The sample rate is 1.24 millions sa
 The node works in a plug and play. High quality SDR devices (RTL-SDR, USRP, BladeRF, HackRF etc..) can be attached to sample on much higher rate.
 
 |rf_node|
+
+| RF data with two RTL-SDR connected devices 
+
 |rf_node_console|
 
 

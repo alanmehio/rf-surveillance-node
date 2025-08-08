@@ -22,7 +22,8 @@ The node works in a plug and play. High quality SDR devices (RTL-SDR, USRP, Blad
 
 | RF data with two RTL-SDR connected devices 
 
-|rf_node_console|
+.. image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/main/media/screen/rf-node-console.gif
+    :alt: RF Surveillance Node Console Display for two RTL-SDR devices
 
 
 
@@ -124,7 +125,6 @@ License
 .. |rf_node| image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/main/media/rf-node.png
     :alt: RF Surveillance Node
 
-.. |rf_node_console| image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/main/media/screen/rf-node-console.gif
-    :alt: RF Surveillance Node Console Display for two RTL-SDR devices
+    
 
 

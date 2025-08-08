@@ -11,3 +11,6 @@ $ ffmpeg -i input.webm -pix_fmt rgb24 output.gif
 
 to convert from mp4 to gif animation
 $ ffmpeg -i cat.mp4 cat.gif
+
+To Cut gif animation duration 
+https://ezgif.com

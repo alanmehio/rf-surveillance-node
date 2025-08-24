@@ -10,15 +10,15 @@ class DeviceManager:
 
     TTYUSB = "ttyUSB"
 
-    def __init__(self):
+    def __init__(self)->None:
         pass
 
     @staticmethod
     def get_device_serial_list() -> list[str]:
         # Get  a list of detected device serial numbers
         # Alan make some check and exception throwing later on
-        serial_numbers = RtlSdr.get_device_serial_addresses()
-        return serial_numbers
+        serial_numbers = RtlSdr.get_device_serial_addresses() 
+        return list(map(str,serial_numbers)) # map() allows us to apply a specified function to each item in an iterable.
 
     @staticmethod
     def get_telemetary_device_path() -> str:
@@ -33,7 +33,7 @@ class DeviceManager:
         lst = s.split("\n")
 
         for ss in lst:
-            device_path: str = None
+            device_path: str = ''
             if ss.find(DeviceManager.TTYUSB) != -1:
                 lst2 = ss.split("->")
                 device_path = DeviceManager.__do_get_telemetary_device_path(lst2)

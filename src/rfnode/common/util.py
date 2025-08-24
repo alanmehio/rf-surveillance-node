@@ -20,6 +20,8 @@ class Util:
             freq_end (int): The ending frequencies in HZ.
             freq_step (int): The step size for frequency increments in HZ.
             device_amount (int): The number of devices to split the frequencies into
+        Return:
+            list[int]:Array of equal or near-equal size.
 .
         """
         frequencies = np.arange(freq_start, freq_end, freq_step, np.int64)

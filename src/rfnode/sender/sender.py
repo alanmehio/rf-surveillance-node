@@ -19,7 +19,7 @@ class Sender:
         Args:
             data (bytes): for which the checksum is to be calculated.
         Return:
-            int: checksum.
+            int: checksum of givin data.
 
         """
         checksum = zlib.crc32(data)

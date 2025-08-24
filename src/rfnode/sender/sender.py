@@ -14,15 +14,38 @@ class Sender:
         self.ser = ser
 
     def checksum_calculator(self, data: bytes) -> int:
+        """
+        Responsible for calculating the CRC32 checksum of the given data.
+        Args:
+            data (bytes): for which the checksum is to be calculated.
+        Return:
+            int: checksum.
+
+        """
         checksum = zlib.crc32(data)
         return checksum
 
     # 4bytes*1  = 4 bytes
     def generate_header(self, data: bytes) -> bytes:
+        """
+        Responsible for generating the checksum.
+        Args:
+            data(bytes): for which the checksum is to be generated.
+
+
+        """
         checksum: int = self.checksum_calculator(data)
         return struct.pack("!I", checksum)
 
     def build_packets(self, payload: str) -> list[bytes]:
+        """
+        Constructs a list of byte packets from a given string payload.
+        Args:
+            payload(str): The string payload to be converted into packets.
+        Return:
+            list[bytes]: returns the list of packets.
+
+        """
         data: bytes = payload.encode() + Sender.NEW_LINE
         header: bytes = self.generate_header(data)
         # Split data into chunks
@@ -40,6 +63,11 @@ class Sender:
         return indexed_chunks
 
     def send(self, payload: str) -> None:
+        """
+        Responsible for sending a payload over a serial connection.
+        Args:
+            payload(str): string that will be sent over the serial connection.
+        """
         packets: list[bytes] = self.build_packets(payload=payload)
         # FIXME Exception can SerialTimeoutException Alan configure for timeout
         for packet in packets:

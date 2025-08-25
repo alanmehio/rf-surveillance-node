@@ -42,6 +42,12 @@ class DeviceManager:
 
     @staticmethod
     def __do_get_telemetary_device_path(lst2: list) -> str:
+        """
+        Responsible for extracting the telemetry device path from a given list.
+
+        Return: 
+            string: extracted device path. If the substring is not found, the method returns None.
+        """
         i = lst2[1].find(DeviceManager.TTYUSB)
         if i != -1:
             ttyUSB = lst2[1]

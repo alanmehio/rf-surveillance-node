@@ -28,7 +28,7 @@ class DataBroker:
 
     def worker(self):
         """ loop once the queue is empty this loop block 
-             or the thread get blocked await for incoming data to read again
+             or the thread get blocked await for incoming data to read again.
         """
         while True:
             self.logger.info("inside the worker now ..")

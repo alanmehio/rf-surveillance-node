@@ -39,7 +39,15 @@ Note: Check the devicemanager from the control panel for the port name
 
 
 def main() -> None:
+    """
+    The main function is called only when the script is executed directly,
+   
+    Execute data acquisition system using RTL-SDR devices.
+    It initializes a logging manager and configures it based on command-line arguments, responsible
+    for managing data flow between different components of the system.
 
+
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("setting", help="path to setting file", type=str, metavar="file")
     parser.add_argument(

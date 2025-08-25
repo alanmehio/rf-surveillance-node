@@ -41,6 +41,9 @@ class Scanner(Thread):
         self.logger = logging.getLogger("Scanner")
 
     def run(self):
+        """
+        Initiating the scanning process of the specified frequency range using the RTL-SDR device.
+        """
         self.logger.info(f"{self.name}: Starting scanner")
 
         stop_freq = self.frequencies[len(self.frequencies) - 1]
@@ -61,6 +64,10 @@ class Scanner(Thread):
         self.sdr.close()
 
     def do_run(self) -> None:
+        """
+        Responsible for performing the actual scanning of frequencies, analyzing the received samples, and identifying high-power signals
+
+        """
         power_levels = []
         for freq in self.frequencies:
             self.sdr.center_freq = freq

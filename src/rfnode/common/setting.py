@@ -27,6 +27,13 @@ class Setting:
 
     @staticmethod
     def load_setting(file: str):
+        """
+        Reads the JSON file and updates the class attributes with the values from the file.
+
+        Args:
+          file (str): Representing the path to the JSON configuration file.
+
+        """
         with open(file) as f:
             config = json.load(f)
             Setting.freq_start = int(float(config["freq_start"]) * 1e6)  # from MHz to Hz
@@ -41,6 +48,9 @@ class Setting:
 
 
 if __name__ == "__main__":
+    """
+    Demonstrating how to load configuration settings from a JSON file into the Setting class.
+    """
     import os.path
     from pathlib import Path
 

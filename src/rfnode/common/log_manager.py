@@ -12,6 +12,12 @@ class LogManager:
         return cls.instance
 
     def config_logger(self, verbose, dir):
+        """
+        Responsible for configuring the logging settings in the LogManager class. 
+        Args:
+            verbose (int): Determines the login level.
+            dir (string): Representing the directory where log files should be stored.
+        """
         params = {}
         levels = [logging.ERROR, logging.WARNING, logging.INFO, logging.DEBUG]
         level = levels[min(len(levels) - 1, verbose)]
@@ -30,6 +36,9 @@ class LogManager:
 
 
 if __name__ == "__main__":
+    """
+    
+    """
     manager = LogManager()
     manager.config_logger(
         3,

@@ -12,6 +12,18 @@ class Util:
     def generate_array(
         cls, freq_start: int, freq_end: int, freq_step: int, device_amount: int
     ) -> list[np.int64]:
+        """
+    
+        Generates an array of frequencies based on the provided start, end, and step values.
+        Args:
+            freq_start (int): The starting frequencies in HZ.
+            freq_end (int): The ending frequencies in HZ.
+            freq_step (int): The step size for frequency increments in HZ.
+            device_amount (int): The number of devices to split the frequencies into
+        Return:
+            list[int]:Array of equal or near-equal size.
+.
+        """
         frequencies = np.arange(freq_start, freq_end, freq_step, np.int64)
         return np.array_split(frequencies, device_amount)  # split of equal or near-equal size
 

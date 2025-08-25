@@ -56,6 +56,7 @@ class HighPowerSample:
         return self.power
 
     def to_json(self, clazz=type[NumpyComplexEncoder]) -> str:
+        """Responsible for serializing the instance's attributes into a JSON string."""
         json_str: str = json.dumps(self.samples.tolist(), cls=clazz)
         feq: str = str(self.center_frequency)
         d: dict = {
@@ -84,6 +85,7 @@ class HighPowerFrequency:
         self.date_time = datetime.now()
 
     def to_json(self, clazz=type[json.JSONEncoder]) -> str:
+        """Responsible for serializing the instance's attributes into a JSON string."""
         frequencies_str = json.dumps(self.frequencies, cls=clazz)
         d: dict = {
             "threshold_power": str(self.threshold_power),

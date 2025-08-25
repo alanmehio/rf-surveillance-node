@@ -36,6 +36,9 @@ class LogManager:
 
 
 if __name__ == "__main__":
+    """
+    
+    """
     manager = LogManager()
     manager.config_logger(
         3,

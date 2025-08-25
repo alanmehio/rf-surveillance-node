@@ -77,6 +77,13 @@ class Sender:
 
 
 def main() -> None:
+    """
+    Demonstrating how to use the Sender class to send data over a serial connection.
+
+    It establishes a serial connection, creates a Sender instance, and
+    enters an infinite loop, repeatedly sending a predefined payload string.
+
+    """
     ser = Serial("COM3", baudrate=115200)
     sender: Sender = Sender(ser)
     while True:

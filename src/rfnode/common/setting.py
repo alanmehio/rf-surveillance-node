@@ -48,6 +48,9 @@ class Setting:
 
 
 if __name__ == "__main__":
+    """
+    Demonstrating how to load configuration settings from a JSON file into the Setting class.
+    """
     import os.path
     from pathlib import Path
 
